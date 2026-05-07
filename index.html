@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KMEX 2026 — Korea Manufacturers Export Forum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0B1929;
+  --navy-mid: #132238;
+  --navy-light: #1C3250;
+  --gold: #C9A84C;
+  --gold-light: #E4C97E;
+  --white: #F5F0E8;
+  --gray: #8A9BB0;
+  --border: rgba(201,168,76,0.15);
+  --card-bg: #0F2035;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── NOISE TEXTURE ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 60px;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.2s;
+}
+
+.hero-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(72px, 10vw, 140px);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.4s;
+}
+
+.hero-title .accent { color: var(--gold); }
+
+.hero-subtitle {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 400;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 60px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.6s;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.8s;
+}
+
+.hero-event {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-event-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.hero-event-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.hero-divider {
+  width: 1px;
+  background: var(--border);
+  align-self: stretch;
+}
+
+.hero-cta {
+  margin-top: 60px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 1s;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--gold);
+  color: var(--navy);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gray);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 1.2s;
+}
+
+.scroll-hint::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--gray);
+}
+
+/* ─── STATS BAR ─── */
+.stats-bar {
+  display: flex;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 32px 60px;
+  gap: 0;
+}
+
+.stat {
+  flex: 1;
+  padding: 0 40px 0 0;
+  border-right: 1px solid var(--border);
+}
+
+.stat:last-child { border-right: none; padding-right: 0; padding-left: 40px; }
+.stat:first-child { padding-left: 0; }
+
+.stat-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ─── MAIN CONTENT ─── */
+.main {
+  padding: 80px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ─── FILTERS ─── */
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.filter-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--gray);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.filter-btn.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
+  font-weight: 500;
+}
+
+/* ─── COMPANY GRID ─── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 32px;
+  transition: border-color 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 0;
+  background: var(--gold);
+  transition: height 0.3s ease;
+}
+
+.card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-2px); }
+.card:hover::before { height: 100%; }
+.card.hidden { display: none; }
+
+.card-cat {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+.card-company {
+  margin-bottom: 20px;
+}
+
+.card-name-en {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+}
+
+.card-name-kr {
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.card-products {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-product {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--white);
+  margin-bottom: 6px;
+  opacity: 0.85;
+}
+
+.card-product::before {
+  content: '—';
+  color: var(--gold);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.card-refs {
+  margin-bottom: 24px;
+}
+
+.card-refs-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 6px;
+}
+
+.card-ref-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.ref-tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.2);
+  color: var(--gold-light);
+}
+
+/* ─── SLOTS ─── */
+.slots {
+  margin-bottom: 24px;
+}
+
+.slots-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 10px;
+}
+
+.slots-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.slots-city {
+  font-size: 11px;
+  color: var(--gray);
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.slot-pills {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.slot {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: 1px solid;
+}
+
+.slot.open {
+  background: rgba(71,187,120,0.08);
+  border-color: rgba(71,187,120,0.3);
+  color: #6FDFA0;
+}
+
+.slot.open:hover {
+  background: rgba(71,187,120,0.2);
+}
+
+.slot.full {
+  background: rgba(138,155,176,0.06);
+  border-color: rgba(138,155,176,0.15);
+  color: rgba(138,155,176,0.4);
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+/* ─── BOOK BUTTON ─── */
+.btn-book {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-book:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+/* ─── MODAL ─── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11,25,41,0.92);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  background: var(--navy-mid);
+  border: 1px solid var(--border);
+  padding: 48px;
+  max-width: 480px;
+  width: 100%;
+  transform: translateY(20px);
+  transition: transform 0.3s;
+}
+
+.modal-overlay.active .modal {
+  transform: translateY(0);
+}
+
+.modal-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.modal-company {
+  font-size: 13px;
+  color: var(--gold);
+  margin-bottom: 32px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 6px;
+}
+
+.form-input, .form-select {
+  width: 100%;
+  background: var(--navy);
+  border: 1px solid var(--border);
+  color: var(--white);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+}
+
+.form-input:focus, .form-select:focus {
+  border-color: var(--gold);
+}
+
+.form-select option { background: var(--navy); }
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.btn-submit {
+  flex: 1;
+  background: var(--gold);
+  border: none;
+  color: var(--navy);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-submit:hover { background: var(--gold-light); }
+
+.btn-cancel {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--gray);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 20px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-cancel:hover { border-color: var(--gray); color: var(--white); }
+
+/* ─── SUCCESS ─── */
+.success-state {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.success-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.success-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.success-msg {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  padding: 48px 60px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.footer-contact {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.footer-contact a { color: var(--gold); text-decoration: none; }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .hero, .main { padding: 60px 24px; }
+  .stats-bar { padding: 24px; flex-direction: column; gap: 24px; }
+  .stat { border-right: none; padding: 0; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+  .stat:last-child { border-bottom: none; padding-bottom: 0; }
+  .hero-meta { flex-direction: column; gap: 20px; }
+  .hero-divider { display: none; }
+  .grid { grid-template-columns: 1fr; }
+  .footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
+  .modal { padding: 32px 24px; }
+  .scroll-hint { display: none; }
+}
+
+/* ─── PRODUCT DETAIL MODAL ─── */
+.prod-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11,25,41,0.95);
+  backdrop-filter: blur(12px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.prod-modal-overlay.active { opacity: 1; pointer-events: all; }
+
+.prod-modal {
+  background: var(--navy-mid);
+  border: 1px solid var(--border);
+  padding: 48px;
+  max-width: 640px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  transform: translateY(20px);
+  transition: transform 0.3s;
+}
+.prod-modal-overlay.active .prod-modal { transform: translateY(0); }
+
+.prod-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  gap: 16px;
+}
+
+.prod-modal-close {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--gray);
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.prod-modal-close:hover { border-color: var(--gold); color: var(--gold); }
+
+.prod-item {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+}
+.prod-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.prod-item-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+}
+
+.prod-item-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.prod-item-desc {
+  font-size: 13px;
+  color: rgba(245,240,232,0.75);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.prod-item-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.prod-spec {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  padding: 3px 10px;
+  background: rgba(201,168,76,0.06);
+  border: 1px solid rgba(201,168,76,0.18);
+  color: var(--gold-light);
+}
+
+.btn-view-products {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(138,155,176,0.25);
+  color: var(--gray);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 8px;
+}
+.btn-view-products:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-eyebrow">Korea Manufacturers Export Forum · Private B2B Consultation</div>
+  <h1 class="hero-title">
+    <span class="accent">KM</span>EX<br>2026
+  </h1>
+  <p class="hero-subtitle">Korea × North America · Industrial Partnerships</p>
+
+  <div class="hero-meta">
+    <div class="hero-event">
+      <span class="hero-event-label">Chicago</span>
+      <span class="hero-event-value">June 23, 2026</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-event">
+      <span class="hero-event-label">Format</span>
+      <span class="hero-event-value">Private · By Invitation</span>
+    </div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#companies" class="btn-primary">
+      View Companies & Book a Slot
+      <span>↓</span>
+    </a>
+  </div>
+
+  <div class="scroll-hint">Scroll to explore</div>
+</section>
+
+<!-- ─── STATS ─── -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">9</div>
+    <div class="stat-label">Korean Manufacturers</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">Jun 23</div>
+    <div class="stat-label">Chicago · Private Hotel Event</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">30</div>
+    <div class="stat-label">Min Per Consultation</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">Jun 23</div>
+    <div class="stat-label">Chicago · Chicago · June 23, 2026</div>
+  </div>
+</div>
+
+<!-- ─── COMPANIES ─── -->
+<main class="main" id="companies">
+  <div class="section-header">
+    <span class="section-title">Participating Companies</span>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="filter('all', this)">All (9)</button>
+    <button class="filter-btn" onclick="filter('automation', this)">Automation &amp; Robotics (5)</button>
+    <button class="filter-btn" onclick="filter('parts', this)">Parts &amp; Materials (3)</button>
+    <button class="filter-btn" onclick="filter('lubricants', this)">Lubricants / MRO (1)</button>
+    <button class="filter-btn" onclick="filter('defense', this)">Defense &amp; Drone (2)</button>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <!-- YONGJIN -->
+    <div class="card" data-cat="automation">
+      <div class="card-cat">Automation &amp; Robotics</div>
+      <div class="card-company">
+        <div class="card-name-en">Yongjin</div>
+        <div class="card-name-kr">주식회사 용진</div>
+      </div>
+      <div class="card-products">
+        <div class="card-product">High-stiffness Industrial Robot Frames</div>
+        <div class="card-product">Heavy-duty Cast Iron Structural Components</div>
+        <div class="card-product">OEM/ODM Available</div>
+      </div>
+      <div class="card-refs">
+        <div class="card-refs-label">Certifications</div>
+        <div class="card-ref-tags">
+          <span class="ref-tag">ISO 9001</span>
+          <span class="ref-tag">ISO 14001</span>
+          <span class="ref-tag">CE</span>
+          <span class="ref-tag">Export Active</span>
+        </div>
+      </div>
+      <div class="slots">
+        <div class="slots-label">Available Slots</div>
+        <div class="slots-row">
+          <span class="slots-city">Chicago 6/23</span>
+          <div class="slot-pills">
+            <span class="slot open">9:00</span>
+            <span class="slot open">9:30</span>
+            <span class="slot open">10:00</span>
+            <span class="slot open">10:30</span>
+            <span class="slot open">11:00</span>
+          </div>
+        </div>
+      </div>
+      <button class="btn-view-products" onclick="openProducts('yongjin')">View Product Details →</button>
+      <button class="btn-book" onclick="openModal('Yongjin', '주식회사 용진')">Request a Meeting Slot</button>
+    </div>
+
+    <!-- DAEDONG METALS -->
+    <div class="card" data-cat="automation">
+      <div class="card-cat">Automation &amp; Robotics</div>
+      <div class="card-company">
+        <div class="card-name-en">Daedong Metals</div>
+        <div class="card-name-kr">대동금속</div>
+      </div>
+      <div class="card-products">
+        <div class="card-product">Robot Base Link (L1 Link)</div>
+        <div class="card-product">Rocker Main Body — Load Support Frame</div>
+        <div class="card-product">Averaging Arm — Load Distribution Link</div>
+      </div>
+      <div class="card-refs">
+        <div class="card-refs-label">Target Markets</div>
+        <div class="card-ref-tags">
+          <span class="ref-tag">USA Export Active</span>
+          <span class="ref-tag">Robot OEM</span>
+          <span class="ref-tag">HS 7325.99</span>
+        </div>
+      </div>
+      <div class="slots">
+        <div class="slots-label">Available Slots</div>
+        <div class="slots-row">
+          <span class="slots-city">Chicago 6/23</span>
+          <div class="slot-pills">
+            <span class="slot open">9:00</span>
+            <span class="slot open">9:30</span>
+            <span class="slot open">10:00</span>
+            <span class="slot open">10:30</span>
+            <span class="slot open">11:00</span>
+          </div>
+        </div>
+      </div>
+      <button class="btn-view-products" onclick="openProducts('daedong')">View Product Details →</button>
+      <button class="btn-book" onclick="openModal('Daedong Metals', '대동금속')">Request a Meeting Slot</button>
+    </div>
+
+    <!-- YEDO AUTOMATION -->
+    <div class="card" data-cat="automation">
+      <div class="card-cat">Automation &amp; Robotics</div>
+      <div class="card-company">
+        <div class="card-name-en">Yedo Automation</div>
+        <div class="card-name-kr">예도오토메이션</div>
+      </div>
+      <div class="card-products">
+        <div class="card-product">Press Line 3D Transfer System</div>
+        <div class="card-product">Press Line Tandem Transfer</div>
+        <div class="card-product">Press Handling Robot Line (6-axis)</div>
+      </div>
+      <div class="card-refs">
+        <div class="card-refs-label">Capability</div>
+        <div class="card-ref-tags">
+          <span class="ref-tag">X·Y·Z 3D Motion</span>
+          <span class="ref-tag">Multi-Process</span>
+          <span class="ref-tag">Auto Gripper Change</span>
+        </div>
+      </div>
+      <div class="slots">
+        <div class="slots-label">Available Slots</div>
+        <div class="slots-row">
+          <span class="slots-city">Chicago 6/23</span>
+          <div class="slot-pills">
+            <span class="slot open">9:00</span>
+            <span class="slot open">9:30</span>
+            <span class="slot open">10:00</span>
+            <span class="slot open">10:30</span>
+            <span class="slot open">11:00</span>
+          </div>
+        </div>
+      </div>
+      <button class="btn-view-products" onclick="openProducts('yedo')">View Product Details →</button>
+      <button class="btn-book" onclick="openModal('Yedo Automation', '예도오토메이션')">Request a Meeting Slot</button>
+    </div>
+
+    <!-- LPR KOREA -->
+    <div class="card" data-cat="automation">
+      <div class="card-cat">Automation &amp; Robotics</div>
+      <div class="card-company">
+        <div class="card-name-en">LPR Korea</div>
+        <div class="card-name-kr">엘피알코리아 주식회사</div>
+      </div>
+      <div class="card-products">
+        <div class="card-product">Equipment Connecting &amp; Driving Parts</div>
+        <div class="card-product">Turnkey Manufacturing Automation Solutions</div>
+        <div class="card-product">Line / Cell / Logistics Automation</div>
+      </div>
+      <div class="card-refs">
+        <div class="card-refs-label">Specialization</div>
+        <div class="card-ref-tags">
+          <span class="ref-tag">Turnkey Integrator</span>
+          <span class="ref-tag">Steel Mill</span>
+          <span class="ref-tag">Korean Consortium</span>
+        </div>
+      </div>
+      <div class="slots">
+        <div class="slots-label">Available Slots</div>
+        <div class="slots-row">
+          <span class="slots-city">Chicago 6/23</span>
+          <div class="slot-pills">
+            <span class="slot open">9:00</span>
+            <span class="slot open">9:30</span>
+            <span class="slot open">10:00</span>
+            <span class="slot open">10:30</span>
+            <span class="slot open">11:00</span>
+          </div>
+        </div>
+      </div>
+      <button class="btn-view-products" onclick="openProducts('lpr')">View Product Details →</button>
+      <button class="btn-book" onclick="openModal('LPR Korea', '엘피알코리아')">Request a Meeting Slot</button>
+    </div>
+
+    <!-- UND -->
+    <div class="card" data-cat="automation">
+      <div class="card-cat">Automation &amp; Robotics</div>
+      <div class="card-company">
+        <div class="card-name-en">UND Co.</div>
+        <div class="card-name-kr">주식회사 유엔디</div>
+      </div>
+      <div class="card-products">
+        <div class="card-product">Wireless Robot Automatic Tool Changer</div>
+        <div class="card-product">Robot Magnetic Gripper</div>
+        <div class="card-product">World's First Fully Wireless ATC</div>
+      </div>
+      <div class="card-refs">
+        <div class="card-refs-label">Key References</div>
+        <div class="card-ref-tags">
+          <span class="ref-tag">Hyundai / Kia</span>
+          <span class="ref-tag">Samsung Display</span>
+          <span class="ref-tag">Hyundai WIA</span>
+          <span class="ref-tag">CE · FCC</span>
+        </div>
+      </div>
+      <div class="slots">
+        <div class="slots-label">Available Slots</div>
+        <div class="slots-row">
+          <span class="slots-city">Chicago 6/23</span>
+          <div class="slot-pills">
+            <span class="slot open">9:00</span>
+            <span class="slot open">9:30</span>
+            <span class="slot open">10:00</span>
+            <span class="slot open">10:30</span>
+            <span class="slot open">11:00</span>
+          </div>
+        </div>
+      </div>
+      <button class="btn-view-products" onclick="openProducts('und')">View Product Details →</button>
+      <button class="btn-book" onclick="openModal('UND Co.', '주식회사 유엔디')">Request a Meeting Slot</button>
+    </div>
+
+    <!-- WOWTECH -->
+    <div class="card" data-cat="parts">
+      <div class="card-cat">Parts &amp; Materials</div>
+      <div class="card-company">
+        <div class="card-name-en">Wowtech</div>
+        <div class="card-name-kr">㈜와우텍</div>
+      </div>
+      <div class="card-products">
+        <div class="card-product">IMEB Ball Screw Shaft (EV Brake)</div>
+        <div class="card-product">Plate Reinforce (Hybrid Transmission)</div>
+        <div class="card-product">WAD Screw / WAD Nut</div>
+      </div>
+      <div class="card-refs">
+        <div class="card-refs-label">Key References</div>
+        <div class="card-ref-tags">
+          <span class="ref-tag">CTR Mobility</span>
+          <span class="ref-tag">VALEO</span>
+          <span class="ref-tag">Toyota SC</span>
+          <span class="ref-tag">Subaru SC</span>
+        </div>
+      </div>
+      <div class="slots">
+        <div class="slots-label">Available Slots</div>
+        <div class="slots-row">
+          <span class="slots-city">Chicago 6/23</span>
+          <div class="slot-pills">
+            <span class="slot open">9:00</span>
+            <span class="slot open">9:30</span>
+            <span class="slot open">10:00</span>
+            <span class="slot open">10:30</span>
+            <span class="slot open">11:00</span>
+          </div>
+        </div>
+      </div>
+      <button class="btn-view-products" onclick="openProducts('wowtech')">View Product Details →</button>
+      <button class="btn-book" onclick="openModal('Wowtech', '㈜와우텍')">Request a Meeting Slot</button>
+    </div>
+
+    <!-- JEONWOO -->
+    <div class="card" data-cat="parts">
+      <div class="card-cat">Parts &amp; Materials</div>
+      <div class="card-company">
+        <div class="card-name-en">Jeonwoo Precision</div>
+        <div class="card-name-kr">㈜전우정밀</div>
+      </div>
+      <div class="card-products">
+        <div class="card-product">Motor Case (Seat &amp; Wiper Motors)</div>
+        <div class="card-product">Airbag Inflator Housing</div>
+        <div class="card-product">Door Striker / Heater Bracket</div>
+      </div>
+      <div class="card-refs">
+        <div class="card-refs-label">Key References</div>
+        <div class="card-ref-tags">
+          <span class="ref-tag">MAGNA</span>
+          <span class="ref-tag">AT&amp;S</span>
+          <span class="ref-tag">SL / KDS</span>
+          <span class="ref-tag">IATF 16949</span>
+        </div>
+      </div>
+      <div class="slots">
+        <div class="slots-label">Available Slots</div>
+        <div class="slots-row">
+          <span class="slots-city">Chicago 6/23</span>
+          <div class="slot-pills">
+            <span class="slot open">9:00</span>
+            <span class="slot open">9:30</span>
+            <span class="slot open">10:00</span>
+            <span class="slot open">10:30</span>
+            <span class="slot open">11:00</span>
+          </div>
+        </div>
+      </div>
+      <button class="btn-view-products" onclick="openProducts('jeonwoo')">View Product Details →</button>
+      <button class="btn-book" onclick="openModal('Jeonwoo Precision', '㈜전우정밀')">Request a Meeting Slot</button>
+    </div>
+
+    <!-- LUBCHEM -->
+    <div class="card" data-cat="lubricants">
+      <div class="card-cat">Industrial Lubricants / MRO</div>
+      <div class="card-company">
+        <div class="card-name-en">Lubchem</div>
+        <div class="card-name-kr">주식회사 루브캠코리아</div>
+      </div>
+      <div class="card-products">
+        <div class="card-product">Grease for Robot Reducer (RB 6020 M)</div>
+        <div class="card-product">Gear Actuator &amp; Robot Grease (GA 6462 MF)</div>
+        <div class="card-product">Logistics Robot Lubricant (Hyundai MobED)</div>
+      </div>
+      <div class="card-refs">
+        <div class="card-refs-label">Key References</div>
+        <div class="card-ref-tags">
+          <span class="ref-tag">POSCO</span>
+          <span class="ref-tag">Hyundai Motor</span>
+          <span class="ref-tag">Samsung</span>
+          <span class="ref-tag">SKF</span>
+          <span class="ref-tag">Schaeffler</span>
+          <span class="ref-tag">Toshiba</span>
+        </div>
+      </div>
+      <div class="slots">
+        <div class="slots-label">Available Slots</div>
+        <div class="slots-row">
+          <span class="slots-city">Chicago 6/23</span>
+          <div class="slot-pills">
+            <span class="slot open">9:00</span>
+            <span class="slot open">9:30</span>
+            <span class="slot open">10:00</span>
+            <span class="slot open">10:30</span>
+            <span class="slot open">11:00</span>
+          </div>
+        </div>
+      </div>
+      <button class="btn-view-products" onclick="openProducts('lubchem')">View Product Details →</button>
+      <button class="btn-book" onclick="openModal('Lubchem', '루브캠코리아')">Request a Meeting Slot</button>
+    </div>
+
+    <!-- CANLAB -->
+    <div class="card" data-cat="defense">
+      <div class="card-cat">Defense &amp; Drone Systems</div>
+      <div class="card-company">
+        <div class="card-name-en">CANLAB</div>
+        <div class="card-name-kr">㈜캔랩</div>
+      </div>
+      <div class="card-products">
+        <div class="card-product">EOIR FPV Camera for Drone (AISEN-HY FPV)</div>
+        <div class="card-product">Thermal Camera for UAS (AISEN-TI)</div>
+        <div class="card-product">VGA Resolution · 640×480 · LWIR</div>
+      </div>
+      <div class="card-refs">
+        <div class="card-refs-label">Key References</div>
+        <div class="card-ref-tags">
+          <span class="ref-tag">LIG Nex1</span>
+          <span class="ref-tag">Hanwha Systems</span>
+          <span class="ref-tag">Singapore / Canada</span>
+          <span class="ref-tag">EN9100</span>
+          <span class="ref-tag">MIL-STD-810</span>
+        </div>
+      </div>
+      <div class="slots">
+        <div class="slots-label">Available Slots</div>
+        <div class="slots-row">
+          <span class="slots-city">Chicago 6/23</span>
+          <div class="slot-pills">
+            <span class="slot open">9:00</span>
+            <span class="slot open">9:30</span>
+            <span class="slot open">10:00</span>
+            <span class="slot open">10:30</span>
+            <span class="slot open">11:00</span>
+          </div>
+        </div>
+      </div>
+      <button class="btn-view-products" onclick="openProducts('canlab')">View Product Details →</button>
+      <button class="btn-book" onclick="openModal('CANLAB', '㈜캔랩')">Request a Meeting Slot</button>
+    </div>
+
+  </div>
+</main>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="footer-brand">KMEX 2026</div>
+  <div class="footer-contact">
+    Organized by CnCare · 
+    <a href="mailto:doyoon.kim@cncare.co.kr">doyoon.kim@cncare.co.kr</a>
+  </div>
+</footer>
+
+
+<!-- ─── PRODUCT DETAIL MODAL ─── -->
+<div class="prod-modal-overlay" id="prod-modal" onclick="closeProdOnOverlay(event)">
+  <div class="prod-modal">
+    <div class="prod-modal-header">
+      <div>
+        <div class="modal-company" id="prod-modal-cat" style="margin-bottom:8px"></div>
+        <div class="modal-title" id="prod-modal-title"></div>
+        <div style="font-size:13px;color:var(--gray);margin-top:4px" id="prod-modal-kr"></div>
+      </div>
+      <button class="prod-modal-close" onclick="closeProdModal()">✕</button>
+    </div>
+    <div id="prod-modal-body"></div>
+  </div>
+</div>
+
+<!-- ─── MODAL ─── -->
+<div class="modal-overlay" id="modal" onclick="closeOnOverlay(event)">
+  <div class="modal">
+    <div id="modal-form-state">
+      <div class="modal-title">Book a Slot</div>
+      <div class="modal-company" id="modal-company-name">Company Name</div>
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input class="form-input" type="text" id="f-name" placeholder="John Smith">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Company</label>
+        <input class="form-input" type="text" id="f-company" placeholder="Your company name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Job Title</label>
+        <input class="form-input" type="text" id="f-title" placeholder="Director of Operations">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" id="f-email" placeholder="your@company.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Preferred City</label>
+        <select class="form-select" id="f-city">
+          <option value="chicago">Chicago — June 23, 2026</option>
+
+        </select>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-submit" onclick="submitForm()">Confirm Request</button>
+        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+    <div id="modal-success-state" style="display:none">
+      <div class="success-state">
+        <div class="success-icon">✓</div>
+        <div class="success-title">Request Received</div>
+        <p class="success-msg">Thank you. Our team will confirm your slot and send details to your email within 24 hours.</p>
+        <br>
+        <button class="btn-cancel" style="margin-top:16px" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let currentCompany = '';
+let currentCompanyKr = '';
+
+function filter(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+
+function openModal(nameEn, nameKr) {
+  currentCompany = nameEn;
+  currentCompanyKr = nameKr;
+  document.getElementById('modal-company-name').textContent = nameEn + ' · ' + nameKr;
+  document.getElementById('modal-form-state').style.display = 'block';
+  document.getElementById('modal-success-state').style.display = 'none';
+  document.getElementById('f-name').value = '';
+  document.getElementById('f-company').value = '';
+  document.getElementById('f-title').value = '';
+  document.getElementById('f-email').value = '';
+  document.getElementById('modal').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+}
+
+function closeOnOverlay(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+}
+
+function submitForm() {
+  const name = document.getElementById('f-name').value.trim();
+  const company = document.getElementById('f-company').value.trim();
+  const title = document.getElementById('f-title').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const city = document.getElementById('f-city').value;
+
+  if (!name || !company || !email) {
+    alert('Please fill in your name, company, and email.');
+    return;
+  }
+
+  const cityLabel = 'Chicago Jun 23';
+  const subject = encodeURIComponent(`[KMEX 2026] Slot Request — ${currentCompany} — ${cityLabel}`);
+  const body = encodeURIComponent(`Name: ${name}\nCompany: ${company}\nTitle: ${title}\nEmail: ${email}\nCompany of Interest: ${currentCompany} (${currentCompanyKr})\nCity: ${cityLabel}`);
+  
+  window.location.href = `mailto:doyoon.kim@cncare.co.kr?subject=${subject}&body=${body}`;
+
+  document.getElementById('modal-form-state').style.display = 'none';
+  document.getElementById('modal-success-state').style.display = 'block';
+}
+
+
+const PRODUCTS = {
+  yongjin: {
+    name: "Yongjin", kr: "주식회사 용진",
+    products: [
+      { num: "01", name: "High-Stiffness Industrial Robot Frame",
+        desc: "High-rigidity cast iron frame designed to withstand heavy dynamic loads and minimize vibration during operation. The structural backbone of industrial robotic arms — positioned between the base and first joint, bearing the full weight and payload of the robot. OEM/ODM available.",
+        specs: ["ISO 9001", "ISO 14001", "CE Ready", "OEM/ODM", "MOQ: 10 EA", "HS: 8479.9"] }
+    ]
+  },
+  daedong: {
+    name: "Daedong Metals", kr: "대동금속",
+    products: [
+      { num: "01", name: "L1 Link — Robot Base Link",
+        desc: "Core component between robot base and first joint. Must satisfy strength, stiffness, and precision under full robot load plus payload. Manufactured using ductile cast iron for superior fatigue resistance.",
+        specs: ["HS: 7325.99", "MOQ: 100–300", "USA Export Active"] },
+      { num: "02", name: "Rocker Main Body",
+        desc: "Key structural frame that supports load and stabilizes motion across the robot. Requires high stiffness and excellent vibration damping — achieved through spheroidal graphite cast iron construction.",
+        specs: ["HS: 7325.99", "MOQ: 100–300", "OEM/ODM Available"] },
+      { num: "03", name: "Averaging Arm",
+        desc: "Load distribution link in the robot linkage mechanism. Subjected to repeated cyclic loading — requires high strength and fatigue resistance. Complex geometry achieved through precision casting.",
+        specs: ["HS: 7325.99", "MOQ: 100–500"] }
+    ]
+  },
+  yedo: {
+    name: "Yedo Automation", kr: "예도오토메이션",
+    products: [
+      { num: "01", name: "Press Line 3D Transfer",
+        desc: "Automated transfer for multi-process products within a single press. Full 3D motion (X, Y, Z axes). Drive unit at top of feed bar maximizes lower space. Independent axis structure for easy maintenance.",
+        specs: ["HS: 8428.90", "OEM/ODM", "3-Axis X·Y·Z"] },
+      { num: "02", name: "Press Line Tandem Transfer",
+        desc: "Inter-press transfer for multi-press lines. Handles height differences and part reversal. Compact design minimizes press-to-press spacing. Reduces model changeover time — ideal for mixed production.",
+        specs: ["HS: 8428.70", "Multi-Model", "Quick Changeover"] },
+      { num: "03", name: "Press Handling Robot Line",
+        desc: "6-axis handling robot for press lines handling shape-constrained parts. Automatic mold and gripper change to maximize productivity.",
+        specs: ["HS: 8428.90", "6-Axis Robot", "Auto Gripper Change"] }
+    ]
+  },
+  lpr: {
+    name: "LPR Korea", kr: "엘피알코리아",
+    products: [
+      { num: "01", name: "Equipment Connecting & Driving Parts",
+        desc: "Precision components for automation equipment — connecting and driving elements for line, cell-based, logistics, and steel mill automation.",
+        specs: ["HS: 8483400000", "Precision Mfg", "OEM Available"] },
+      { num: "02", name: "Turnkey Manufacturing Automation Solution",
+        desc: "LPR Korea is a consortium of Korean manufacturers offering complete turnkey automation solutions. Line automation, cell-based, logistics, and steel mill automation — one contact, full solution.",
+        specs: ["HS: 84795000", "Turnkey", "Line / Cell / Logistics / Steel"] }
+    ]
+  },
+  und: {
+    name: "UND Co.", kr: "주식회사 유엔디",
+    products: [
+      { num: "01", name: "Robot Automatic Tool Changer — Wireless",
+        desc: "The world's first fully wireless robot ATC — no external air or communication cables. Eliminates cable interference during complex multi-process operations. Uses patented ultra-fast switching magnetic technology. Repeatability: ±0.05mm.",
+        specs: ["CE", "FCC", "HS: 8479.90.9090", "MOQ: 1", "±0.05mm", "Patented"] },
+      { num: "02", name: "Robot Magnetic Gripper",
+        desc: "High-speed magnetic gripper using switching magnetic technology. Super-powerful grip on ferromagnetic workpieces. Drastically reduces cycle times. Customizable payload for automotive chassis, heavy structural parts, and more.",
+        specs: ["CE", "FCC", "High-Speed", "Custom Payload", "Automotive Grade"] }
+    ]
+  },
+  wowtech: {
+    name: "Wowtech", kr: "㈜와우텍",
+    products: [
+      { num: "01", name: "IMEB Ball Screw Shaft",
+        desc: "High-precision ball screw shaft for EV braking systems and robotic joints. O.B.D control within 10 microns. Stable mass production exceeding 1 million units annually with proven process capability.",
+        specs: ["HS: 8483.4", "MOQ: 1,000", "±10μm O.B.D", "1M+ Units/Year", "CTR Mobility"] },
+      { num: "02", name: "Plate Reinforce",
+        desc: "Key component for strong hybrid transmission systems (Toyota, Subaru). Process: hot forging → CNC → MCT → heat treatment. Integrated manufacturing from forging to final machining.",
+        specs: ["HS: 8708.93", "MOQ: 1,000", "VALEO", "Toyota SC", "Subaru SC"] },
+      { num: "03", name: "WAD Screw / WAD Nut",
+        desc: "Mating components for hybrid transmission. One-step machining from bar stock to finished parts. Complex nut geometry with droplet-shaped protrusions. High cost efficiency through advanced process control.",
+        specs: ["HS: 8483.4", "MOQ: 1,000", "Pyeonghwa VALEO"] }
+    ]
+  },
+  jeonwoo: {
+    name: "Jeonwoo Precision", kr: "㈜전우정밀",
+    products: [
+      { num: "01", name: "Motor Case",
+        desc: "Precision deep-drawn component for automotive seat and wiper motors. Made to customer drawings — high durability, dimensional accuracy. Also applicable to robotics actuators and industrial motor housings.",
+        specs: ["HS: 7326.9", "IATF 16949", "ISO 14001", "SL / KDS"] },
+      { num: "02", name: "Airbag Inflator Housing",
+        desc: "Precision deep-drawn housing for airbag inflators. Designed for high-pressure resistance and structural integrity. Stable mass production with consistent quality. Applicable to safety-critical housings in mobility systems.",
+        specs: ["HS: 8708.95", "IATF 16949", "AT&S", "High-Pressure Rated"] },
+      { num: "03", name: "Door Striker",
+        desc: "Precision metal component for automotive door locking systems. High strength and durability through press forming and surface treatment. Applicable to locking mechanisms in mobility and robotics.",
+        specs: ["HS: 8301.6", "IATF 16949", "MAGNA", "SL / KDS"] },
+      { num: "04", name: "Heater Bracket",
+        desc: "Metal bracket for fixing heater units in appliances. Precision press forming with stable quality and cost efficiency. Applicable to industrial, electronic, and robotics equipment structures.",
+        specs: ["HS: 7326.9", "IATF 16949", "PACIFIC X"] }
+    ]
+  },
+  lubchem: {
+    name: "Lubchem", kr: "루브캠코리아",
+    products: [
+      { num: "01", name: "Robot Reducer Grease — RB 6020 M",
+        desc: "Specialized grease for robot reducer applications. Formulated for extreme load cycling, precision positioning, and heat typical of industrial robot joints. Supplied to Hyundai Motor, LG Electronics, Samsung Electronics.",
+        specs: ["HS: 3403.99", "IATF 16949", "ISO 9001", "KS Certified", "Halal Certified", "MOQ: 200"] },
+      { num: "02", name: "Gear Actuator & Robot Grease — GA 6462 MF",
+        desc: "High-performance grease for gear actuators and robots. Precise torque transmission under variable load. Supplied to Schaeffler, SKF, GMB, and Toshiba globally.",
+        specs: ["HS: 3403.99", "ISO 45001", "Schaeffler", "SKF", "MOQ: 200"] },
+      { num: "03", name: "Logistics Robot Lubricant — BH 6551 M(B)",
+        desc: "Developed specifically for Hyundai MobED logistics robot platform. Officially adopted by Hyundai — validates real-world logistics automation performance. Available for other logistics robot applications.",
+        specs: ["HS: 3403.99", "Hyundai MobED Official", "KROKATAU POSCO", "MOQ: 200"] }
+    ]
+  },
+  canlab: {
+    name: "CANLAB", kr: "㈜캔랩",
+    products: [
+      { num: "01", name: "AISEN-HY FPV — EOIR Camera for Drones",
+        desc: "Integrates VGA thermal and daylight cameras into a single lightweight FPV payload. Simultaneous day and night operation. Deployed with Ubify, NearSlab, and Pablo Air. Full ODM customization available for FOV, interface, and housing.",
+        specs: ["HS: 8525.89", "MOQ: 1,000", "EN9100 In Progress", "ODM Available", "LIG Nex1"] },
+      { num: "02", name: "AISEN-TI — Thermal Camera for UAS",
+        desc: "Compact uncooled LWIR thermal camera (Lynred ATTO640). 640×480 VGA, ≤50mK sensitivity. 30/60Hz, FOV 17°–95°. Interfaces: USB, Ethernet, GMSL, MIPI. 3–6 week ODM sample lead time. Proven with Korean defense primes and international clients.",
+        specs: ["HS: 8525.89", "640×480 VGA", "≤50mK", "MIL-STD-810", "Hanwha Systems"] }
+    ]
+  }
+};
+
+function openProducts(key) {
+  const d = PRODUCTS[key];
+  if (!d) return;
+  document.getElementById('prod-modal-title').textContent = d.name;
+  document.getElementById('prod-modal-kr').textContent = d.kr;
+  document.getElementById('prod-modal-cat').textContent = 'Product Details';
+  let html = '';
+  d.products.forEach(p => {
+    html += `<div class="prod-item">
+      <div class="prod-item-num">ITEM ${p.num}</div>
+      <div class="prod-item-name">${p.name}</div>
+      <div class="prod-item-desc">${p.desc}</div>
+      <div class="prod-item-specs">${p.specs.map(s => `<span class="prod-spec">${s}</span>`).join('')}</div>
+    </div>`;
+  });
+  document.getElementById('prod-modal-body').innerHTML = html;
+  document.getElementById('prod-modal').classList.add('active');
+}
+
+function closeProdModal() {
+  document.getElementById('prod-modal').classList.remove('active');
+}
+
+function closeProdOnOverlay(e) {
+  if (e.target === document.getElementById('prod-modal')) closeProdModal();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeModal(); closeProdModal(); }
+});
+
+</script>
+</body>
+</html>
