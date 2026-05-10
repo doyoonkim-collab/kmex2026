@@ -69,6 +69,7 @@ nav{
   top:0;left:50%;transform:translateX(-50%);
   width:100vw;height:100%;
   overflow:hidden;pointer-events:none;z-index:0;
+  background:rgba(245,245,247,0.82);
 }
 .logo-ticker-wrap::before,
 .logo-ticker-wrap::after{
@@ -77,13 +78,13 @@ nav{
 .logo-ticker-wrap::before{left:0;background:linear-gradient(to right,var(--bg) 30%,transparent)}
 .logo-ticker-wrap::after{right:0;background:linear-gradient(to left,var(--bg) 30%,transparent)}
 .ticker-row{
-  display:flex;align-items:center;gap:16px;
+  display:flex;align-items:center;gap:20px;
   position:absolute;left:0;
   white-space:nowrap;
   will-change:transform;
 }
-.ticker-row.row1{top:22%}
-.ticker-row.row2{top:58%}
+.ticker-row.row1{top:18%}
+.ticker-row.row2{top:62%}
 @keyframes ticker-scroll{
   from{transform:translateX(0)}
   to{transform:translateX(-50%)}
@@ -91,15 +92,16 @@ nav{
 .ticker-card{
   display:inline-flex;align-items:center;justify-content:center;
   background:var(--white);border:1px solid var(--gray3);
-  border-radius:12px;padding:0 24px;
-  width:160px;height:60px;
+  border-radius:14px;padding:0 28px;
+  width:200px;height:80px;
   flex-shrink:0;flex-grow:0;
-  opacity:.65;
+  opacity:.9;
+  box-shadow:0 1px 6px rgba(0,0,0,0.06);
 }
 .ticker-card img{
-  width:112px;height:36px;
+  width:140px;height:52px;
   object-fit:contain;object-position:center;
-  filter:grayscale(100%);opacity:.8;
+  filter:grayscale(100%);opacity:.85;
 }
 
 /* hero 콘텐츠는 ticker 위로 */
