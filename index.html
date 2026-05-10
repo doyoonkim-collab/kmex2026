@@ -79,11 +79,11 @@ nav{
 .ticker-row{
   display:flex;align-items:center;gap:16px;
   position:absolute;left:0;
-  animation:ticker-scroll 35s linear infinite;
   white-space:nowrap;
+  will-change:transform;
 }
 .ticker-row.row1{top:22%}
-.ticker-row.row2{top:58%;animation-duration:42s;animation-direction:reverse}
+.ticker-row.row2{top:58%}
 @keyframes ticker-scroll{
   from{transform:translateX(0)}
   to{transform:translateX(-50%)}
@@ -1268,6 +1268,43 @@ nav{
 
 <script>
 lucide.createIcons();
+
+// Smooth infinite ticker
+document.querySelectorAll('.ticker-row').forEach((row, i) => {
+  const speed = i === 0 ? 40 : 55; // seconds for full scroll
+  let pos = 0;
+  let lastTime = null;
+  const dir = i === 0 ? -1 : 1;
+  
+  // 정확한 절반 너비 계산 (카드 수 × 카드너비+gap의 절반)
+  function getHalfWidth() {
+    const children = row.children;
+    const half = Math.floor(children.length / 2);
+    let w = 0;
+    for (let j = 0; j < half; j++) {
+      w += children[j].getBoundingClientRect().width + 16;
+    }
+    return w;
+  }
+  
+  let halfW = 0;
+  setTimeout(() => { halfW = getHalfWidth(); }, 100);
+  
+  function tick(ts) {
+    if (!lastTime) lastTime = ts;
+    const dt = ts - lastTime;
+    lastTime = ts;
+    if (halfW > 0) {
+      pos += dir * (halfW / (speed * 1000)) * dt;
+      if (pos <= -halfW) pos += halfW;
+      if (pos >= 0 && dir === 1) pos -= halfW;
+      row.style.transform = `translateX(${pos}px)`;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+});
+
 function openModal(co){
   document.getElementById('m-ttl').textContent=co?co.split('—')[0].trim():'Book a Session';
   if(co){const s=document.getElementById('f6');for(let i=0;i<s.options.length;i++){if(s.options[i].text.includes(co.split('—')[0].trim().split(' ')[0])){s.selectedIndex=i;break;}}}
@@ -1297,6 +1334,43 @@ function toggleExpand(key){
     panel.classList.add('open');
     card.style.borderRadius='18px 18px 0 0';
     lucide.createIcons();
+
+// Smooth infinite ticker
+document.querySelectorAll('.ticker-row').forEach((row, i) => {
+  const speed = i === 0 ? 40 : 55; // seconds for full scroll
+  let pos = 0;
+  let lastTime = null;
+  const dir = i === 0 ? -1 : 1;
+  
+  // 정확한 절반 너비 계산 (카드 수 × 카드너비+gap의 절반)
+  function getHalfWidth() {
+    const children = row.children;
+    const half = Math.floor(children.length / 2);
+    let w = 0;
+    for (let j = 0; j < half; j++) {
+      w += children[j].getBoundingClientRect().width + 16;
+    }
+    return w;
+  }
+  
+  let halfW = 0;
+  setTimeout(() => { halfW = getHalfWidth(); }, 100);
+  
+  function tick(ts) {
+    if (!lastTime) lastTime = ts;
+    const dt = ts - lastTime;
+    lastTime = ts;
+    if (halfW > 0) {
+      pos += dir * (halfW / (speed * 1000)) * dt;
+      if (pos <= -halfW) pos += halfW;
+      if (pos >= 0 && dir === 1) pos -= halfW;
+      row.style.transform = `translateX(${pos}px)`;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+});
+
     setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'start'}),50);
   }
 }
