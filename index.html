@@ -89,21 +89,23 @@ nav{
   to{transform:translateX(-50%)}
 }
 .ticker-card{
-  display:inline-flex;flex-direction:column;gap:5px;
+  display:inline-flex;align-items:center;justify-content:center;
   background:var(--white);
   border:1px solid var(--gray3);
   border-radius:12px;
-  padding:14px 20px;
-  min-width:200px;
-  opacity:.55;
+  padding:12px 24px;
+  height:60px;
+  min-width:140px;
+  max-width:200px;
+  opacity:.6;
   flex-shrink:0;
 }
-.ticker-card-track{
-  font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  padding:2px 6px;border-radius:3px;width:fit-content;
+.ticker-card img{
+  width:100%;height:36px;
+  object-fit:contain;
+  filter:grayscale(100%);
+  opacity:.75;
 }
-.ticker-card-name{font-size:14px;font-weight:700;color:var(--black);letter-spacing:-.02em}
-.ticker-card-cat{font-size:11px;color:var(--gray2)}
 
 /* hero 콘텐츠는 ticker 위로 */
 .hero > *:not(.logo-ticker-wrap){position:relative;z-index:1}
@@ -216,13 +218,16 @@ nav{
 }
 .co-logo-bg{
   position:absolute;
-  bottom:-8px;right:-8px;
-  width:88px;height:88px;
+  top:50%;
+  left:calc(260px + 50%);
+  transform:translate(-50%,-50%);
+  width:240px;height:140px;
   object-fit:contain;
-  opacity:.07;
+  opacity:.055;
   pointer-events:none;
   filter:grayscale(100%);
 }
+.co-main{position:relative;overflow:hidden;}
 .co-index{font-size:12px;font-weight:600;color:var(--gray2);letter-spacing:.02em;margin-bottom:8px}
 .co-track{
   display:inline-block;font-size:11px;font-weight:600;
@@ -243,6 +248,7 @@ nav{
 .co-m{
   padding:32px 36px;
   display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
 }
 .co-prods{list-style:none;display:flex;flex-direction:column;gap:11px}
 .co-prods li{
@@ -425,7 +431,27 @@ nav{
   <div class="logo-ticker-wrap">
     <!-- 1열: 왼→오 -->
     <div class="ticker-row row1">
-      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">UND Co., Ltd.</div><div class="ticker-card-cat">Wireless Robot Automation</div></div>
+      <div class="ticker-card"><img src="logos/und_logo.png" alt="UND"></div>
+      <div class="ticker-card"><img src="logos/lubchem_logo.png" alt="Lubchem"></div>
+      <div class="ticker-card"><img src="logos/daedong_logo.png" alt="Daedong"></div>
+      <div class="ticker-card"><img src="logos/yongjin_logo.png" alt="Yongjin"></div>
+      <div class="ticker-card"><img src="logos/yedo_logo.png" alt="Yedo"></div>
+      <div class="ticker-card"><img src="logos/lpr_logo.png" alt="LPR"></div>
+      <div class="ticker-card"><img src="logos/wowtech_logo.png" alt="WOWTECH"></div>
+      <div class="ticker-card"><img src="logos/jeonwoo_logo.png" alt="Jeonwoo"></div>
+      <div class="ticker-card"><img src="logos/canlab_logo.png" alt="CANLAB"></div>
+      <div class="ticker-card"><img src="logos/rfon_logo.png" alt="RFON"></div>
+      <div class="ticker-card"><img src="logos/und_logo.png" alt="UND"></div>
+      <div class="ticker-card"><img src="logos/lubchem_logo.png" alt="Lubchem"></div>
+      <div class="ticker-card"><img src="logos/daedong_logo.png" alt="Daedong"></div>
+      <div class="ticker-card"><img src="logos/yongjin_logo.png" alt="Yongjin"></div>
+      <div class="ticker-card"><img src="logos/yedo_logo.png" alt="Yedo"></div>
+      <div class="ticker-card"><img src="logos/lpr_logo.png" alt="LPR"></div>
+      <div class="ticker-card"><img src="logos/wowtech_logo.png" alt="WOWTECH"></div>
+      <div class="ticker-card"><img src="logos/jeonwoo_logo.png" alt="Jeonwoo"></div>
+      <div class="ticker-card"><img src="logos/canlab_logo.png" alt="CANLAB"></div>
+      <div class="ticker-card"><img src="logos/rfon_logo.png" alt="RFON"></div>
+      </div><div class="ticker-card-name">UND Co., Ltd.</div><div class="ticker-card-cat">Wireless Robot Automation</div></div>
       <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">Lubchem Korea</div><div class="ticker-card-cat">Robot Reducer Grease</div></div>
       <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">Daedong Metals</div><div class="ticker-card-cat">Structural Castings</div></div>
       <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">Yongjin Co.</div><div class="ticker-card-cat">Industrial Robot Frames</div></div>
@@ -441,7 +467,27 @@ nav{
     </div>
     <!-- 2열: 오→왼 (reverse) -->
     <div class="ticker-row row2">
-      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">LPR Korea Inc.</div><div class="ticker-card-cat">Turnkey Automation</div></div>
+      <div class="ticker-card"><img src="logos/rfon_logo.png" alt="RFON"></div>
+      <div class="ticker-card"><img src="logos/canlab_logo.png" alt="CANLAB"></div>
+      <div class="ticker-card"><img src="logos/jeonwoo_logo.png" alt="Jeonwoo"></div>
+      <div class="ticker-card"><img src="logos/wowtech_logo.png" alt="WOWTECH"></div>
+      <div class="ticker-card"><img src="logos/lpr_logo.png" alt="LPR"></div>
+      <div class="ticker-card"><img src="logos/yedo_logo.png" alt="Yedo"></div>
+      <div class="ticker-card"><img src="logos/yongjin_logo.png" alt="Yongjin"></div>
+      <div class="ticker-card"><img src="logos/daedong_logo.png" alt="Daedong"></div>
+      <div class="ticker-card"><img src="logos/lubchem_logo.png" alt="Lubchem"></div>
+      <div class="ticker-card"><img src="logos/und_logo.png" alt="UND"></div>
+      <div class="ticker-card"><img src="logos/rfon_logo.png" alt="RFON"></div>
+      <div class="ticker-card"><img src="logos/canlab_logo.png" alt="CANLAB"></div>
+      <div class="ticker-card"><img src="logos/jeonwoo_logo.png" alt="Jeonwoo"></div>
+      <div class="ticker-card"><img src="logos/wowtech_logo.png" alt="WOWTECH"></div>
+      <div class="ticker-card"><img src="logos/lpr_logo.png" alt="LPR"></div>
+      <div class="ticker-card"><img src="logos/yedo_logo.png" alt="Yedo"></div>
+      <div class="ticker-card"><img src="logos/yongjin_logo.png" alt="Yongjin"></div>
+      <div class="ticker-card"><img src="logos/daedong_logo.png" alt="Daedong"></div>
+      <div class="ticker-card"><img src="logos/lubchem_logo.png" alt="Lubchem"></div>
+      <div class="ticker-card"><img src="logos/und_logo.png" alt="UND"></div>
+      </div><div class="ticker-card-name">LPR Korea Inc.</div><div class="ticker-card-cat">Turnkey Automation</div></div>
       <div class="ticker-card"><div class="ticker-card-track t-b">Automotive</div><div class="ticker-card-name">Jeonwoo Precision</div><div class="ticker-card-cat">Precision Deep Drawing</div></div>
       <div class="ticker-card"><div class="ticker-card-track t-c">Defense</div><div class="ticker-card-name">CANLAB Co.</div><div class="ticker-card-cat">FPV Thermal Payload</div></div>
       <div class="ticker-card"><div class="ticker-card-track t-c">Defense</div><div class="ticker-card-name">RFON Co., Ltd.</div><div class="ticker-card-cat">Counter-UAS · GaN HPA</div></div>
@@ -523,9 +569,9 @@ nav{
             <div class="co-name-kr">주식회사 유엔디</div>
           </div>
           <div class="co-cat">Wireless Robot Automation</div>
-          <img src="logos/und_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
+          <img src="logos/und_logo.png" class="co-logo-bg" alt="">
           <ul class="co-prods">
             <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i>World's first fully wireless automatic tool changer — zero cables, zero air lines</li>
             <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i>High-speed magnetic gripper · ±0.05mm repeatability</li>
@@ -590,9 +636,9 @@ nav{
             <div class="co-name-kr">루브캠코리아</div>
           </div>
           <div class="co-cat">Industrial Lubricants · MRO</div>
-          <img src="logos/lubchem_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
+          <img src="logos/lubchem_logo.png" class="co-logo-bg" alt="">
           <ul class="co-prods">
             <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i>Precision grease for robot reducers & gear actuators</li>
             <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i>Approved lubricant for Hyundai MobED logistics robots</li>
@@ -659,9 +705,9 @@ nav{
             <div class="co-name-kr">대동금속주식회사</div>
           </div>
           <div class="co-cat">Robotics Structural Castings</div>
-          <img src="logos/daedong_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
+          <img src="logos/daedong_logo.png" class="co-logo-bg" alt="">
           <ul class="co-prods">
             <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i>L1 Link & Rocker Main Body for industrial & logistics robots</li>
             <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i>Ductile cast iron — high rigidity + vibration absorption</li>
@@ -726,9 +772,9 @@ nav{
             <div class="co-name-kr">주식회사 용진</div>
           </div>
           <div class="co-cat">Industrial Robot Frames</div>
-          <img src="logos/yongjin_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
+          <img src="logos/yongjin_logo.png" class="co-logo-bg" alt="">
           <ul class="co-prods">
             <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i>High-stiffness cast iron frames for heavy-duty industrial robots</li>
             <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i>Withstands heavy dynamic loads, minimizes vibration</li>
@@ -783,9 +829,9 @@ nav{
             <div class="co-name-kr">예도오토메이션</div>
           </div>
           <div class="co-cat">Press Transfer Automation</div>
-          <img src="logos/yedo_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
+          <img src="logos/yedo_logo.png" class="co-logo-bg" alt="">
           <ul class="co-prods">
             <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i>3D Transfer Line — X/Y/Z · 1.5–3.0s cycle · up to 30kg</li>
             <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i>Tandem & inner transfer for multi-press lines</li>
@@ -850,9 +896,9 @@ nav{
             <div class="co-name-kr">엘피알코리아</div>
           </div>
           <div class="co-cat">Turnkey Automation Solutions</div>
-          <img src="logos/lpr_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
+          <img src="logos/lpr_logo.png" class="co-logo-bg" alt="">
           <ul class="co-prods">
             <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i>Precision connecting & driving parts for automation systems</li>
             <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i>Full turnkey: line automation, cell-based, logistics, steel mill</li>
@@ -912,9 +958,9 @@ nav{
             <div class="co-name-kr">주식회사 와우텍</div>
           </div>
           <div class="co-cat">EV & Mobility Precision Parts</div>
-          <img src="logos/wowtech_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
+          <img src="logos/wowtech_logo.png" class="co-logo-bg" alt="">
           <ul class="co-prods">
             <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--blue)"></i>IMEB Ball Screw Shaft for EV electric brake systems</li>
             <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--blue)"></i>Hybrid transmission parts — Toyota/Subaru spec · VALEO</li>
@@ -979,9 +1025,9 @@ nav{
             <div class="co-name-kr">주식회사 전우정밀</div>
           </div>
           <div class="co-cat">Precision Deep Drawing</div>
-          <img src="logos/jeonwoo_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
+          <img src="logos/jeonwoo_logo.png" class="co-logo-bg" alt="">
           <ul class="co-prods">
             <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--blue)"></i>Motor cases for automotive seat & wiper systems</li>
             <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--blue)"></i>Airbag inflator housings · door strikers · heater brackets</li>
@@ -1046,9 +1092,9 @@ nav{
             <div class="co-name-kr">주식회사 캔랩</div>
           </div>
           <div class="co-cat">AI Vision · Drone Sensing</div>
-          <img src="logos/canlab_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
+          <img src="logos/canlab_logo.png" class="co-logo-bg" alt="">
           <ul class="co-prods">
             <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--blue)"></i>EOIR FPV — thermal + daylight in single payload</li>
             <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--blue)"></i>AISEN-TI: 640×480 VGA · ≤50mK · MIPI/USB/GMSL</li>
@@ -1108,9 +1154,9 @@ nav{
             <div class="co-name-kr">알에프온</div>
           </div>
           <div class="co-cat">Counter-UAS · Defense Electronics</div>
-          <img src="logos/rfon_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
+          <img src="logos/rfon_logo.png" class="co-logo-bg" alt="">
           <ul class="co-prods">
             <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--blue)"></i>GaN 6-Band 1-Pack HPA — 6 modules into 1 unit</li>
             <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--blue)"></i>Directional drone jamming — 5km range · IP65</li>
