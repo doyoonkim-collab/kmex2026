@@ -60,52 +60,10 @@ nav{
   padding:120px 22px 80px;
   text-align:center;
   max-width:800px;margin:0 auto;
-  position:relative;
 }
 
-/* ── LOGO TICKER ── */
-.logo-ticker-wrap{
-  position:absolute;
-  top:0;left:50%;transform:translateX(-50%);
-  width:100vw;height:100%;
-  overflow:hidden;pointer-events:none;z-index:0;
-  background:rgba(245,245,247,0.82);
-}
-.logo-ticker-wrap::before,
-.logo-ticker-wrap::after{
-  content:'';position:absolute;top:0;bottom:0;width:180px;z-index:2;
-}
-.logo-ticker-wrap::before{left:0;background:linear-gradient(to right,var(--bg) 30%,transparent)}
-.logo-ticker-wrap::after{right:0;background:linear-gradient(to left,var(--bg) 30%,transparent)}
-.ticker-row{
-  display:flex;align-items:center;gap:20px;
-  position:absolute;left:0;
-  white-space:nowrap;
-  will-change:transform;
-}
-.ticker-row.row1{top:18%}
-.ticker-row.row2{top:62%}
-@keyframes ticker-scroll{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
-}
-.ticker-card{
-  display:inline-flex;align-items:center;justify-content:center;
-  background:var(--white);border:1px solid var(--gray3);
-  border-radius:14px;padding:0 28px;
-  width:200px;height:80px;
-  flex-shrink:0;flex-grow:0;
-  opacity:.9;
-  box-shadow:0 1px 6px rgba(0,0,0,0.06);
-}
-.ticker-card img{
-  width:140px;height:52px;
-  object-fit:contain;object-position:center;
-  filter:grayscale(100%);opacity:.85;
-}
 
-/* hero 콘텐츠는 ticker 위로 */
-.hero > *:not(.logo-ticker-wrap){position:relative;z-index:1}
+
 .hero-eyebrow{
   font-size:17px;font-weight:500;color:var(--blue);
   margin-bottom:8px;letter-spacing:-.01em;
@@ -204,7 +162,6 @@ nav{
   display:grid;
   grid-template-columns:260px 1fr 200px;
   padding:0;
-  position:relative;overflow:hidden;
 }
 
 /* Card left */
@@ -214,14 +171,7 @@ nav{
   display:flex;flex-direction:column;gap:4px;
   position:relative;overflow:hidden;
 }
-.co-logo-bg{
-  position:absolute;
-  top:50%;left:calc(260px + 50%);
-  transform:translate(-50%,-50%);
-  width:220px;height:120px;
-  object-fit:contain;opacity:.05;
-  pointer-events:none;filter:grayscale(100%);
-}
+
 .co-index{font-size:12px;font-weight:600;color:var(--gray2);letter-spacing:.02em;margin-bottom:8px}
 .co-track{
   display:inline-block;font-size:11px;font-weight:600;
@@ -421,52 +371,7 @@ nav{
 <section class="hero">
 
   <!-- 회사 카드 슬라이드 배경 -->
-  <div class="logo-ticker-wrap">
-    <div class="ticker-row row1">
-      <div class="ticker-card"><img src="logos/und_logo.png" alt="UND"></div>
-      <div class="ticker-card"><img src="logos/lubchem_logo.png" alt="Lubchem"></div>
-      <div class="ticker-card"><img src="logos/daedong_logo.png" alt="Daedong"></div>
-      <div class="ticker-card"><img src="logos/yongjin_logo.png" alt="Yongjin"></div>
-      <div class="ticker-card"><img src="logos/yedo_logo.png" alt="Yedo"></div>
-      <div class="ticker-card"><img src="logos/lpr_logo.png" alt="LPR"></div>
-      <div class="ticker-card"><img src="logos/wowtech_logo.png" alt="WOWTECH"></div>
-      <div class="ticker-card"><img src="logos/jeonwoo_logo.png" alt="Jeonwoo"></div>
-      <div class="ticker-card"><img src="logos/canlab_logo.png" alt="CANLAB"></div>
-      <div class="ticker-card"><img src="logos/rfon_logo.png" alt="RFON"></div>
-      <div class="ticker-card"><img src="logos/und_logo.png" alt="UND"></div>
-      <div class="ticker-card"><img src="logos/lubchem_logo.png" alt="Lubchem"></div>
-      <div class="ticker-card"><img src="logos/daedong_logo.png" alt="Daedong"></div>
-      <div class="ticker-card"><img src="logos/yongjin_logo.png" alt="Yongjin"></div>
-      <div class="ticker-card"><img src="logos/yedo_logo.png" alt="Yedo"></div>
-      <div class="ticker-card"><img src="logos/lpr_logo.png" alt="LPR"></div>
-      <div class="ticker-card"><img src="logos/wowtech_logo.png" alt="WOWTECH"></div>
-      <div class="ticker-card"><img src="logos/jeonwoo_logo.png" alt="Jeonwoo"></div>
-      <div class="ticker-card"><img src="logos/canlab_logo.png" alt="CANLAB"></div>
-      <div class="ticker-card"><img src="logos/rfon_logo.png" alt="RFON"></div>
-    </div>
-    <div class="ticker-row row2">
-      <div class="ticker-card"><img src="logos/rfon_logo.png" alt="RFON"></div>
-      <div class="ticker-card"><img src="logos/canlab_logo.png" alt="CANLAB"></div>
-      <div class="ticker-card"><img src="logos/jeonwoo_logo.png" alt="Jeonwoo"></div>
-      <div class="ticker-card"><img src="logos/wowtech_logo.png" alt="WOWTECH"></div>
-      <div class="ticker-card"><img src="logos/lpr_logo.png" alt="LPR"></div>
-      <div class="ticker-card"><img src="logos/yedo_logo.png" alt="Yedo"></div>
-      <div class="ticker-card"><img src="logos/yongjin_logo.png" alt="Yongjin"></div>
-      <div class="ticker-card"><img src="logos/daedong_logo.png" alt="Daedong"></div>
-      <div class="ticker-card"><img src="logos/lubchem_logo.png" alt="Lubchem"></div>
-      <div class="ticker-card"><img src="logos/und_logo.png" alt="UND"></div>
-      <div class="ticker-card"><img src="logos/rfon_logo.png" alt="RFON"></div>
-      <div class="ticker-card"><img src="logos/canlab_logo.png" alt="CANLAB"></div>
-      <div class="ticker-card"><img src="logos/jeonwoo_logo.png" alt="Jeonwoo"></div>
-      <div class="ticker-card"><img src="logos/wowtech_logo.png" alt="WOWTECH"></div>
-      <div class="ticker-card"><img src="logos/lpr_logo.png" alt="LPR"></div>
-      <div class="ticker-card"><img src="logos/yedo_logo.png" alt="Yedo"></div>
-      <div class="ticker-card"><img src="logos/yongjin_logo.png" alt="Yongjin"></div>
-      <div class="ticker-card"><img src="logos/daedong_logo.png" alt="Daedong"></div>
-      <div class="ticker-card"><img src="logos/lubchem_logo.png" alt="Lubchem"></div>
-      <div class="ticker-card"><img src="logos/und_logo.png" alt="UND"></div>
-    </div>
-  </div>
+  
 
   <div class="hero-eyebrow">Private B2B Sourcing Event · Chicago, Illinois</div>
   <h1>Meet Korea's Best<br>Manufacturers.</h1>
@@ -534,7 +439,6 @@ nav{
             <div class="co-name-kr">주식회사 유엔디</div>
           </div>
           <div class="co-cat">Wireless Robot Automation</div>
-          <img src="logos/und_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -601,7 +505,6 @@ nav{
             <div class="co-name-kr">루브캠코리아</div>
           </div>
           <div class="co-cat">Industrial Lubricants · MRO</div>
-          <img src="logos/lubchem_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -670,7 +573,6 @@ nav{
             <div class="co-name-kr">대동금속주식회사</div>
           </div>
           <div class="co-cat">Robotics Structural Castings</div>
-          <img src="logos/daedong_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -737,7 +639,6 @@ nav{
             <div class="co-name-kr">주식회사 용진</div>
           </div>
           <div class="co-cat">Industrial Robot Frames</div>
-          <img src="logos/yongjin_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -794,7 +695,6 @@ nav{
             <div class="co-name-kr">예도오토메이션</div>
           </div>
           <div class="co-cat">Press Transfer Automation</div>
-          <img src="logos/yedo_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -861,7 +761,6 @@ nav{
             <div class="co-name-kr">엘피알코리아</div>
           </div>
           <div class="co-cat">Turnkey Automation Solutions</div>
-          <img src="logos/lpr_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -923,7 +822,6 @@ nav{
             <div class="co-name-kr">주식회사 와우텍</div>
           </div>
           <div class="co-cat">EV & Mobility Precision Parts</div>
-          <img src="logos/wowtech_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -990,7 +888,6 @@ nav{
             <div class="co-name-kr">주식회사 전우정밀</div>
           </div>
           <div class="co-cat">Precision Deep Drawing</div>
-          <img src="logos/jeonwoo_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -1057,7 +954,6 @@ nav{
             <div class="co-name-kr">주식회사 캔랩</div>
           </div>
           <div class="co-cat">AI Vision · Drone Sensing</div>
-          <img src="logos/canlab_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -1119,7 +1015,6 @@ nav{
             <div class="co-name-kr">알에프온</div>
           </div>
           <div class="co-cat">Counter-UAS · Defense Electronics</div>
-          <img src="logos/rfon_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -1272,43 +1167,6 @@ nav{
 
 <script>
 lucide.createIcons();
-
-// Smooth infinite ticker
-document.querySelectorAll('.ticker-row').forEach((row, i) => {
-  const speed = i === 0 ? 40 : 55; // seconds for full scroll
-  let pos = 0;
-  let lastTime = null;
-  const dir = i === 0 ? -1 : 1;
-  
-  // 정확한 절반 너비 계산 (카드 수 × 카드너비+gap의 절반)
-  function getHalfWidth() {
-    const children = row.children;
-    const half = Math.floor(children.length / 2);
-    let w = 0;
-    for (let j = 0; j < half; j++) {
-      w += children[j].getBoundingClientRect().width + 16;
-    }
-    return w;
-  }
-  
-  let halfW = 0;
-  setTimeout(() => { halfW = getHalfWidth(); }, 100);
-  
-  function tick(ts) {
-    if (!lastTime) lastTime = ts;
-    const dt = ts - lastTime;
-    lastTime = ts;
-    if (halfW > 0) {
-      pos += dir * (halfW / (speed * 1000)) * dt;
-      if (pos <= -halfW) pos += halfW;
-      if (pos >= 0 && dir === 1) pos -= halfW;
-      row.style.transform = `translateX(${pos}px)`;
-    }
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-});
-
 function openModal(co){
   document.getElementById('m-ttl').textContent=co?co.split('—')[0].trim():'Book a Session';
   if(co){const s=document.getElementById('f6');for(let i=0;i<s.options.length;i++){if(s.options[i].text.includes(co.split('—')[0].trim().split(' ')[0])){s.selectedIndex=i;break;}}}
@@ -1338,43 +1196,6 @@ function toggleExpand(key){
     panel.classList.add('open');
     card.style.borderRadius='18px 18px 0 0';
     lucide.createIcons();
-
-// Smooth infinite ticker
-document.querySelectorAll('.ticker-row').forEach((row, i) => {
-  const speed = i === 0 ? 40 : 55; // seconds for full scroll
-  let pos = 0;
-  let lastTime = null;
-  const dir = i === 0 ? -1 : 1;
-  
-  // 정확한 절반 너비 계산 (카드 수 × 카드너비+gap의 절반)
-  function getHalfWidth() {
-    const children = row.children;
-    const half = Math.floor(children.length / 2);
-    let w = 0;
-    for (let j = 0; j < half; j++) {
-      w += children[j].getBoundingClientRect().width + 16;
-    }
-    return w;
-  }
-  
-  let halfW = 0;
-  setTimeout(() => { halfW = getHalfWidth(); }, 100);
-  
-  function tick(ts) {
-    if (!lastTime) lastTime = ts;
-    const dt = ts - lastTime;
-    lastTime = ts;
-    if (halfW > 0) {
-      pos += dir * (halfW / (speed * 1000)) * dt;
-      if (pos <= -halfW) pos += halfW;
-      if (pos >= 0 && dir === 1) pos -= halfW;
-      row.style.transform = `translateX(${pos}px)`;
-    }
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-});
-
     setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'start'}),50);
   }
 }
