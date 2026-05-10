@@ -60,7 +60,53 @@ nav{
   padding:120px 22px 80px;
   text-align:center;
   max-width:800px;margin:0 auto;
+  position:relative;
 }
+
+/* ── LOGO TICKER ── */
+.logo-ticker-wrap{
+  position:absolute;
+  top:0;left:50%;transform:translateX(-50%);
+  width:100vw;height:100%;
+  overflow:hidden;pointer-events:none;z-index:0;
+}
+.logo-ticker-wrap::before,
+.logo-ticker-wrap::after{
+  content:'';position:absolute;top:0;bottom:0;width:180px;z-index:2;
+}
+.logo-ticker-wrap::before{left:0;background:linear-gradient(to right,var(--bg) 30%,transparent)}
+.logo-ticker-wrap::after{right:0;background:linear-gradient(to left,var(--bg) 30%,transparent)}
+.ticker-row{
+  display:flex;align-items:center;gap:16px;
+  position:absolute;left:0;
+  animation:ticker-scroll 35s linear infinite;
+  white-space:nowrap;
+}
+.ticker-row.row1{top:22%}
+.ticker-row.row2{top:58%;animation-duration:42s;animation-direction:reverse}
+@keyframes ticker-scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+.ticker-card{
+  display:inline-flex;flex-direction:column;gap:5px;
+  background:var(--white);
+  border:1px solid var(--gray3);
+  border-radius:12px;
+  padding:14px 20px;
+  min-width:200px;
+  opacity:.55;
+  flex-shrink:0;
+}
+.ticker-card-track{
+  font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:2px 6px;border-radius:3px;width:fit-content;
+}
+.ticker-card-name{font-size:14px;font-weight:700;color:var(--black);letter-spacing:-.02em}
+.ticker-card-cat{font-size:11px;color:var(--gray2)}
+
+/* hero 콘텐츠는 ticker 위로 */
+.hero > *:not(.logo-ticker-wrap){position:relative;z-index:1}
 .hero-eyebrow{
   font-size:17px;font-weight:500;color:var(--blue);
   margin-bottom:8px;letter-spacing:-.01em;
@@ -71,7 +117,7 @@ nav{
   color:var(--black);margin-bottom:20px;
 }
 .hero-sub{
-  font-size:21px;font-weight:500;color:var(--gray1);
+  font-size:21px;font-weight:400;color:var(--gray1);
   line-height:1.55;letter-spacing:-.01em;
   max-width:600px;margin:0 auto 40px;
 }
@@ -113,13 +159,13 @@ nav{
 .stat-note{font-size:12px;color:var(--blue);font-weight:500;margin-top:2px}
 
 /* ── SECTION ── */
-.section{padding:80px 22px;max-width:1200px;margin:0 auto}
+.section{padding:32px 22px 80px;max-width:1200px;margin:0 auto}
 .section-title{
   font-size:48px;font-weight:700;letter-spacing:-.03em;
   line-height:1.08;color:var(--black);margin-bottom:8px;
 }
 .section-sub{
-  font-size:21px;font-weight:500;color:var(--gray1);
+  font-size:21px;font-weight:400;color:var(--gray1);
   letter-spacing:-.01em;margin-bottom:40px;
 }
 
@@ -141,7 +187,7 @@ nav{
 }
 
 /* Company cards */
-.co-grid{display:flex;flex-direction:column;gap:2px}
+.co-grid{display:flex;flex-direction:column;gap:12px}
 
 .co-card{
   background:var(--white);border-radius:var(--r);overflow:hidden;
@@ -166,6 +212,16 @@ nav{
   padding:32px 28px;
   border-right:1px solid var(--gray3);
   display:flex;flex-direction:column;gap:4px;
+  position:relative;overflow:hidden;
+}
+.co-logo-bg{
+  position:absolute;
+  bottom:-8px;right:-8px;
+  width:88px;height:88px;
+  object-fit:contain;
+  opacity:.07;
+  pointer-events:none;
+  filter:grayscale(100%);
 }
 .co-index{font-size:12px;font-weight:600;color:var(--gray2);letter-spacing:.02em;margin-bottom:8px}
 .co-track{
@@ -181,7 +237,7 @@ nav{
   color:var(--black);line-height:1.15;
 }
 .co-name-kr{font-size:12px;font-weight:400;color:var(--gray2);margin-top:2px}
-.co-cat{font-size:13px;font-weight:600;color:#3a3a3c;margin-top:12px}
+.co-cat{font-size:13px;font-weight:500;color:var(--gray1);margin-top:12px}
 
 /* Card mid */
 .co-m{
@@ -190,8 +246,8 @@ nav{
 }
 .co-prods{list-style:none;display:flex;flex-direction:column;gap:11px}
 .co-prods li{
-  font-size:15px;font-weight:500;color:#1D1D1F;
-  line-height:1.5;display:flex;align-items:flex-start;gap:8px;letter-spacing:-.015em;
+  font-size:15px;font-weight:400;color:var(--black);
+  line-height:1.5;display:flex;align-items:flex-start;gap:8px;letter-spacing:-.01em;
 }
 .co-prods li svg{flex-shrink:0;margin-top:3px;color:var(--blue)}
 
@@ -235,19 +291,19 @@ nav{
   overflow:hidden;
 }
 .co-expand.open{display:grid;grid-template-columns:1fr 240px}
-.ex-l{padding:36px 40px;border-right:1px solid var(--gray3)}
-.ex-r{padding:36px 32px;display:flex;flex-direction:column;gap:10px}
-.ex-title{font-size:12px;font-weight:700;color:var(--black);letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px}
+.ex-l{padding:32px 36px;border-right:1px solid var(--gray3)}
+.ex-r{padding:32px 28px;display:flex;flex-direction:column;gap:10px}
+.ex-title{font-size:13px;font-weight:600;color:var(--gray2);letter-spacing:.02em;text-transform:uppercase;margin-bottom:16px}
 .ex-prods{list-style:none;display:flex;flex-direction:column;gap:16px}
 .ex-prods li{padding-bottom:16px;border-bottom:1px solid var(--gray3)}
 .ex-prods li:last-child{border-bottom:none;padding-bottom:0}
-.ex-pname{font-size:17px;font-weight:700;color:var(--black);letter-spacing:-.02em;margin-bottom:6px}
-.ex-pdesc{font-size:15px;font-weight:500;color:#1D1D1F;line-height:1.65;letter-spacing:-.015em}
+.ex-pname{font-size:16px;font-weight:600;color:var(--black);letter-spacing:-.01em;margin-bottom:4px}
+.ex-pdesc{font-size:14px;font-weight:400;color:var(--gray1);line-height:1.6;letter-spacing:-.01em}
 .ex-specs{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
 .ex-spec{
-  background:var(--white);border:1px solid #c0c0c5;
-  padding:3px 9px;border-radius:4px;
-  font-size:12px;font-weight:600;color:var(--black);
+  background:var(--white);border:1px solid var(--gray3);
+  padding:2px 8px;border-radius:4px;
+  font-size:12px;font-weight:500;color:var(--black);
 }
 .ex-dl{
   display:flex;align-items:center;gap:10px;
@@ -257,8 +313,8 @@ nav{
 }
 .ex-dl:hover{border-color:#888}
 .ex-dl svg{color:var(--gray1);flex-shrink:0}
-.ex-dl-name{font-size:14px;font-weight:700;color:var(--black);letter-spacing:-.01em}
-.ex-dl-sub{font-size:12px;color:var(--gray1);margin-top:2px}
+.ex-dl-name{font-size:13px;font-weight:600;color:var(--black);letter-spacing:-.01em}
+.ex-dl-sub{font-size:11px;color:var(--gray2);margin-top:1px}
 .ex-book{
   width:100%;background:var(--blue);color:#fff;border:none;
   padding:12px;border-radius:980px;cursor:pointer;
@@ -279,14 +335,14 @@ nav{
 /* ── VENUE STRIP ── */
 .venue-strip{
   background:var(--white);border-radius:var(--r);
-  padding:28px 36px;
+  padding:56px 64px;
   display:flex;align-items:center;justify-content:space-between;
   flex-wrap:wrap;gap:20px;
-  max-width:1200px;margin:0 auto 80px;
+  max-width:1200px;margin:0 auto 32px;
 }
-.venue-info h3{font-size:19px;font-weight:600;letter-spacing:-.02em;margin-bottom:4px}
-.venue-info p{font-size:15px;font-weight:500;color:#3a3a3c;letter-spacing:-.01em}
-.venue-note{font-size:13px;color:var(--blue);font-weight:500;margin-top:2px}
+.venue-info h3{font-size:36px;font-weight:700;letter-spacing:-.03em;margin-bottom:10px}
+.venue-info p{font-size:20px;color:var(--gray1);letter-spacing:-.01em}
+.venue-note{font-size:15px;color:var(--blue);font-weight:500;margin-top:6px}
 
 /* ── MODAL ── */
 .overlay{
@@ -359,20 +415,53 @@ nav{
   <a class="nav-logo" href="#">KMEX 2026</a>
   <div class="nav-r">
     <div class="nav-live"><span class="live-dot"></span>Chicago · Jun 23</div>
-    <button class="btn-nav" onclick="openModal('')">Book a Session</button>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
+
+  <!-- 회사 카드 슬라이드 배경 -->
+  <div class="logo-ticker-wrap">
+    <!-- 1열: 왼→오 -->
+    <div class="ticker-row row1">
+      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">UND Co., Ltd.</div><div class="ticker-card-cat">Wireless Robot Automation</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">Lubchem Korea</div><div class="ticker-card-cat">Robot Reducer Grease</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">Daedong Metals</div><div class="ticker-card-cat">Structural Castings</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">Yongjin Co.</div><div class="ticker-card-cat">Industrial Robot Frames</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">Yedo Automation</div><div class="ticker-card-cat">Press Transfer Systems</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-b">Automotive</div><div class="ticker-card-name">WOWTECH</div><div class="ticker-card-cat">EV Brake Ball Screw</div></div>
+      <!-- 복제 (무한루프용) -->
+      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">UND Co., Ltd.</div><div class="ticker-card-cat">Wireless Robot Automation</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">Lubchem Korea</div><div class="ticker-card-cat">Robot Reducer Grease</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">Daedong Metals</div><div class="ticker-card-cat">Structural Castings</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">Yongjin Co.</div><div class="ticker-card-cat">Industrial Robot Frames</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">Yedo Automation</div><div class="ticker-card-cat">Press Transfer Systems</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-b">Automotive</div><div class="ticker-card-name">WOWTECH</div><div class="ticker-card-cat">EV Brake Ball Screw</div></div>
+    </div>
+    <!-- 2열: 오→왼 (reverse) -->
+    <div class="ticker-row row2">
+      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">LPR Korea Inc.</div><div class="ticker-card-cat">Turnkey Automation</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-b">Automotive</div><div class="ticker-card-name">Jeonwoo Precision</div><div class="ticker-card-cat">Precision Deep Drawing</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-c">Defense</div><div class="ticker-card-name">CANLAB Co.</div><div class="ticker-card-cat">FPV Thermal Payload</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-c">Defense</div><div class="ticker-card-name">RFON Co., Ltd.</div><div class="ticker-card-cat">Counter-UAS · GaN HPA</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">UND Co., Ltd.</div><div class="ticker-card-cat">CE / FCC / KC · UR+</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-b">Automotive</div><div class="ticker-card-name">WOWTECH</div><div class="ticker-card-cat">IATF 16949 · 1M+ units/yr</div></div>
+      <!-- 복제 -->
+      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">LPR Korea Inc.</div><div class="ticker-card-cat">Turnkey Automation</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-b">Automotive</div><div class="ticker-card-name">Jeonwoo Precision</div><div class="ticker-card-cat">Precision Deep Drawing</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-c">Defense</div><div class="ticker-card-name">CANLAB Co.</div><div class="ticker-card-cat">FPV Thermal Payload</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-c">Defense</div><div class="ticker-card-name">RFON Co., Ltd.</div><div class="ticker-card-cat">Counter-UAS · GaN HPA</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-a">Robotics</div><div class="ticker-card-name">UND Co., Ltd.</div><div class="ticker-card-cat">CE / FCC / KC · UR+</div></div>
+      <div class="ticker-card"><div class="ticker-card-track t-b">Automotive</div><div class="ticker-card-name">WOWTECH</div><div class="ticker-card-cat">IATF 16949 · 1M+ units/yr</div></div>
+    </div>
+  </div>
+
   <div class="hero-eyebrow">Private B2B Sourcing Event · Chicago, Illinois</div>
   <h1>Meet Korea's Best<br>Manufacturers.</h1>
   <p class="hero-sub">Pre-scheduled 30-minute briefings with Korea's leading robotics, automation, and automotive suppliers — in Chicago during Automate week.</p>
   <div class="hero-actions">
-    <button class="btn-blue" onclick="openModal('')">
-      Book a Session <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
-    </button>
-    <button class="btn-ghost" onclick="document.getElementById('co-section').scrollIntoView({behavior:'smooth'})">
+    <button class="btn-blue" onclick="document.getElementById('co-section').scrollIntoView({behavior:'smooth'})">
       View Companies <i data-lucide="chevron-down" style="width:16px;height:16px"></i>
     </button>
   </div>
@@ -405,7 +494,6 @@ nav{
     <p>June 23, 2026 · 9:00 AM – 5:00 PM CDT</p>
     <div class="venue-note">Running during Automate 2026 week — no extra travel needed</div>
   </div>
-  <button class="btn-blue" onclick="openModal('')">Reserve Your Slot</button>
 </div>
 </div>
 
@@ -435,6 +523,7 @@ nav{
             <div class="co-name-kr">주식회사 유엔디</div>
           </div>
           <div class="co-cat">Wireless Robot Automation</div>
+          <img src="logos/und_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -501,6 +590,7 @@ nav{
             <div class="co-name-kr">루브캠코리아</div>
           </div>
           <div class="co-cat">Industrial Lubricants · MRO</div>
+          <img src="logos/lubchem_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -569,6 +659,7 @@ nav{
             <div class="co-name-kr">대동금속주식회사</div>
           </div>
           <div class="co-cat">Robotics Structural Castings</div>
+          <img src="logos/daedong_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -635,6 +726,7 @@ nav{
             <div class="co-name-kr">주식회사 용진</div>
           </div>
           <div class="co-cat">Industrial Robot Frames</div>
+          <img src="logos/yongjin_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -691,6 +783,7 @@ nav{
             <div class="co-name-kr">예도오토메이션</div>
           </div>
           <div class="co-cat">Press Transfer Automation</div>
+          <img src="logos/yedo_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -757,6 +850,7 @@ nav{
             <div class="co-name-kr">엘피알코리아</div>
           </div>
           <div class="co-cat">Turnkey Automation Solutions</div>
+          <img src="logos/lpr_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -818,6 +912,7 @@ nav{
             <div class="co-name-kr">주식회사 와우텍</div>
           </div>
           <div class="co-cat">EV & Mobility Precision Parts</div>
+          <img src="logos/wowtech_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -884,6 +979,7 @@ nav{
             <div class="co-name-kr">주식회사 전우정밀</div>
           </div>
           <div class="co-cat">Precision Deep Drawing</div>
+          <img src="logos/jeonwoo_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -950,6 +1046,7 @@ nav{
             <div class="co-name-kr">주식회사 캔랩</div>
           </div>
           <div class="co-cat">AI Vision · Drone Sensing</div>
+          <img src="logos/canlab_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -1011,6 +1108,7 @@ nav{
             <div class="co-name-kr">알에프온</div>
           </div>
           <div class="co-cat">Counter-UAS · Defense Electronics</div>
+          <img src="logos/rfon_logo.png" class="co-logo-bg" alt="">
         </div>
         <div class="co-m">
           <ul class="co-prods">
@@ -1062,6 +1160,43 @@ nav{
 
   </div><!-- /co-grid -->
 </div><!-- /section -->
+
+<!-- PARTNERS FOOTER -->
+<div style="padding:0 22px">
+<div style="max-width:1200px;margin:0 auto;padding:56px 0 64px;border-top:1px solid var(--gray3)">
+  <div style="font-size:12px;font-weight:600;color:var(--gray2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:32px;text-align:center">Organized & Supported by</div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap">
+    <!-- KITA -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+      <div style="width:120px;height:56px;background:var(--white);border:1px solid var(--gray3);border-radius:10px;display:flex;align-items:center;justify-content:center">
+        <span style="font-size:13px;font-weight:700;color:var(--gray1);letter-spacing:.02em">KITA</span>
+      </div>
+      <span style="font-size:11px;color:var(--gray2);text-align:center">한국무역협회</span>
+    </div>
+    <!-- 대구경북 -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+      <div style="width:120px;height:56px;background:var(--white);border:1px solid var(--gray3);border-radius:10px;display:flex;align-items:center;justify-content:center">
+        <span style="font-size:11px;font-weight:700;color:var(--gray1);letter-spacing:.01em;text-align:center;line-height:1.4">대구광역시<br>경상북도</span>
+      </div>
+      <span style="font-size:11px;color:var(--gray2);text-align:center">Daegu · Gyeongbuk</span>
+    </div>
+    <!-- 로고 슬롯 3 -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+      <div style="width:120px;height:56px;background:var(--white);border:1.5px dashed var(--gray3);border-radius:10px;display:flex;align-items:center;justify-content:center">
+        <span style="font-size:11px;color:var(--gray3)">Logo</span>
+      </div>
+      <span style="font-size:11px;color:var(--gray3);text-align:center">Partner</span>
+    </div>
+    <!-- 로고 슬롯 4 -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+      <div style="width:120px;height:56px;background:var(--white);border:1.5px dashed var(--gray3);border-radius:10px;display:flex;align-items:center;justify-content:center">
+        <span style="font-size:11px;color:var(--gray3)">Logo</span>
+      </div>
+      <span style="font-size:11px;color:var(--gray3);text-align:center">Partner</span>
+    </div>
+  </div>
+</div>
+</div>
 
 <!-- MODAL -->
 <div class="overlay" id="overlay">
