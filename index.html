@@ -230,6 +230,19 @@ nav{
 .btn-session:hover{background:#3a3a3c}
 
 
+
+.btn-featured{
+  display:flex;align-items:center;gap:10px;
+  background:#1D1D1F;color:#fff;
+  border:none;border-radius:12px;
+  padding:14px 16px;cursor:pointer;
+  text-decoration:none;transition:background .2s;
+  width:100%;margin-bottom:8px;box-sizing:border-box;
+}
+.btn-featured:hover{background:#3a3a3c}
+.btn-featured-name{font-size:13px;font-weight:700;color:#fff;letter-spacing:-.01em}
+.btn-featured-sub{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px}
+
 /* ── EXPAND PANEL ── */
 .co-expand{
   display:none;
@@ -290,7 +303,7 @@ nav{
   max-width:1200px;margin:0 auto 32px;
 }
 .venue-info h3{font-size:34px;font-weight:700;letter-spacing:-.03em;margin-bottom:16px;white-space:nowrap}
-.venue-info p{font-size:18px;font-weight:500;color:var(--black);letter-spacing:-.01em;margin-top:8px}
+.venue-info p{font-size:18px;font-weight:500;color:var(--black);letter-spacing:-.01em}
 .venue-note{font-size:17px;color:var(--blue);font-weight:500;margin-top:14px}
 
 /* ── MODAL ── */
@@ -407,8 +420,7 @@ nav{
 <div style="padding:0 22px">
 <div class="venue-strip">
   <div class="venue-info">
-    <h3 style="white-space:nowrap">Crowne Plaza Chicago West Loop</h3>
-    <p style="font-size:18px;font-weight:500;color:var(--black);margin-top:14px">25 S Halsted St, Chicago, IL 60661</p>
+    <h3>Private Hotel · San Francisco, CA</h3>
     <p>June 23, 2026 · 9:00 AM – 5:00 PM PDT</p>
     <div class="venue-note">Running during Automate 2026 week — no extra travel needed</div>
   </div>
@@ -482,10 +494,15 @@ nav{
       </div>
       <div class="ex-r">
         <div class="ex-title">Materials</div>
+        <a class="btn-featured" href="https://drive.google.com/file/d/1-GLCdE6Q6gYPnSVjg7kY4vEHKcwo-mO1/view?usp=drive_link" target="_blank">
+          <i data-lucide="star" style="width:18px;height:18px;color:#FFD60A"></i>
+          <div style="flex:1"><div class="btn-featured-name">Featured Products</div><div class="btn-featured-sub">PDF — Key products for this event</div></div>
+          <i data-lucide="external-link" style="width:14px;height:14px;color:rgba(255,255,255,.5)"></i>
+        </a>
         <a class="ex-dl" href="https://drive.google.com/file/d/15Pw3BsUXzZ-tgwQn6Ncan-TUL3G9fsBC/view?usp=drive_link" target="_blank">
           <i data-lucide="file-text" style="width:18px;height:18px"></i>
           <div>
-            <div class="ex-dl-name">Magbot Product Catalog</div>
+            <div class="ex-dl-name">Company Catalog</div>
             <div class="ex-dl-sub">PDF — Available at session</div>
           </div>
           <i data-lucide="download" style="width:14px;height:14px"></i>
@@ -499,6 +516,7 @@ nav{
     <!-- LUBCHEM -->
     
 
+    <!-- DAEDONG -->
     
 
     <!-- YONGJIN -->
@@ -547,9 +565,14 @@ nav{
       </div>
       <div class="ex-r">
         <div class="ex-title">Materials</div>
+        <a class="btn-featured" href="https://drive.google.com/file/d/14tG4y8-UiOtdXcUPRR2pesxfCl9HdZIj/view?usp=drive_link" target="_blank">
+          <i data-lucide="star" style="width:18px;height:18px;color:#FFD60A"></i>
+          <div style="flex:1"><div class="btn-featured-name">Featured Products</div><div class="btn-featured-sub">PDF — Key products for this event</div></div>
+          <i data-lucide="external-link" style="width:14px;height:14px;color:rgba(255,255,255,.5)"></i>
+        </a>
         <a class="ex-dl" href="https://drive.google.com/file/d/1D0xkuJ0MYSEEmTLYcGGLv3rQHc31ozeU/view?usp=drive_link" target="_blank">
           <i data-lucide="file-text" style="width:18px;height:18px"></i>
-          <div><div class="ex-dl-name">Yongjin Company Profile</div><div class="ex-dl-sub">PDF — Capabilities overview</div></div>
+          <div><div class="ex-dl-name">Company Catalog</div><div class="ex-dl-sub">PDF — Capabilities overview</div></div>
           <i data-lucide="download" style="width:14px;height:14px"></i>
         </a>
         <button class="ex-book" onclick="openModal('Yongjin — Industrial Robot Frame')">Book a Session</button>
@@ -614,9 +637,14 @@ nav{
       </div>
       <div class="ex-r">
         <div class="ex-title">Materials</div>
+        <a class="btn-featured" href="https://drive.google.com/file/d/1AxJfXQdJCzsfGeVlyQRGVzRqF4BgHrym/view?usp=drive_link" target="_blank">
+          <i data-lucide="star" style="width:18px;height:18px;color:#FFD60A"></i>
+          <div style="flex:1"><div class="btn-featured-name">Featured Products</div><div class="btn-featured-sub">PDF — Key products for this event</div></div>
+          <i data-lucide="external-link" style="width:14px;height:14px;color:rgba(255,255,255,.5)"></i>
+        </a>
         <a class="ex-dl" href="https://drive.google.com/file/d/1h5PKap2jjFBd9zhc7vqyhegaGSAdAZUR/view?usp=drive_link" target="_blank">
           <i data-lucide="file-text" style="width:18px;height:18px"></i>
-          <div><div class="ex-dl-name">Yedo Automation Catalog</div><div class="ex-dl-sub">PDF — Press & FA systems</div></div>
+          <div><div class="ex-dl-name">Company Catalog</div><div class="ex-dl-sub">PDF — Press & FA systems</div></div>
           <i data-lucide="download" style="width:14px;height:14px"></i>
         </a>
         <button class="ex-book" onclick="openModal('Yedo Automation — Press Transfer')">Book a Session</button>
@@ -676,9 +704,14 @@ nav{
       </div>
       <div class="ex-r">
         <div class="ex-title">Materials</div>
+        <a class="btn-featured" href="https://drive.google.com/file/d/1ExyMkYkYpAb7xT1Rsoe4fBHA8uDTXb9e/view?usp=drive_link" target="_blank">
+          <i data-lucide="star" style="width:18px;height:18px;color:#FFD60A"></i>
+          <div style="flex:1"><div class="btn-featured-name">Featured Products</div><div class="btn-featured-sub">PDF — Key products for this event</div></div>
+          <i data-lucide="external-link" style="width:14px;height:14px;color:rgba(255,255,255,.5)"></i>
+        </a>
         <a class="ex-dl" href="https://drive.google.com/file/d/1bISBNzOtWF7p7_jNEUmg3bbMLeEJy3sK/view?usp=drive_link" target="_blank">
           <i data-lucide="file-text" style="width:18px;height:18px"></i>
-          <div><div class="ex-dl-name">LPR Global Company Overview</div><div class="ex-dl-sub">PDF — Sourcing platform</div></div>
+          <div><div class="ex-dl-name">Company Catalog</div><div class="ex-dl-sub">PDF — Sourcing platform</div></div>
           <i data-lucide="download" style="width:14px;height:14px"></i>
         </a>
         <button class="ex-book" onclick="openModal('LPR Korea — Turnkey Automation')">Book a Session</button>
@@ -720,61 +753,6 @@ nav{
         </div>
       </div>
     </div>
-    <!-- JEONWOO -->
-    <div class="co-wrap" data-track="b" id="wrap-jeonwoo">
-    <div class="co-card" id="card-jeonwoo" onclick="toggleExpand('jeonwoo')">
-      <div class="co-main">
-        <div class="co-l">
-          <div class="co-index">06</div>
-          <div class="co-track t-b">Tier-1 Automotive</div>
-          <div class="co-name">Jeonwoo Precision</div>
-          <div class="co-name-kr">주식회사 전우정밀</div>
-          <div class="co-cat">Precision Deep Drawing</div>
-        </div>
-        <div class="co-m">
-          <ul class="co-prods">
-            <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i>Motor cases for automotive seat &amp; wiper systems</li>
-            <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i>Airbag inflator housings · door strikers · heater brackets</li>
-            <li><i data-lucide="arrow-right" style="width:14px;height:14px"></i>IATF 16949 · ISO 14001 · 2018 World Class 300</li>
-          </ul>
-          <p style="margin-top:32px;font-size:15px;font-weight:400;color:var(--blue);letter-spacing:.01em;text-align:center;font-style:italic;opacity:.9">↓ &nbsp; Click to view product details &amp; catalog</p>
-        </div>
-        <div class="co-r">
-          <div>
-            <div class="co-refs-lbl">Key Customers</div>
-            <div class="co-tags">
-              <span class="co-tag">MAGNA</span><span class="co-tag">SL</span><span class="co-tag">KDS</span><span class="co-tag">AT&amp;S</span>
-            </div>
-          </div>
-          <div>
-            <div class="co-slot s-open"><span class="sdot"></span>Available</div>
-            <button class="btn-session" onclick="event.stopPropagation();openModal('Jeonwoo Precision — Deep Drawing')">Book Session</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="co-expand" id="expand-jeonwoo">
-      <div class="ex-l">
-        <div class="ex-lbl">Products &amp; Specifications</div>
-        <ul class="ex-prods">
-          <li><div class="ex-pname">Motor Case (Automotive &amp; Robotics)</div><div class="ex-pdesc">Precision deep-drawn component for automotive seat &amp; wiper motors. High durability, dimensional accuracy. Customers: SL, KDS.</div><div class="ex-specs"><span class="ex-spec">IATF 16949</span><span class="ex-spec">ISO 14001</span><span class="ex-spec">Deep Drawing</span></div></li>
-          <li><div class="ex-pname">Airbag Inflator Housing</div><div class="ex-pdesc">Precision deep-drawn housing for airbag inflators. High-pressure resistance and structural integrity. Customer: AT&amp;S.</div><div class="ex-specs"><span class="ex-spec">IATF 16949</span><span class="ex-spec">High-Pressure</span><span class="ex-spec">Safety-Critical</span></div></li>
-          <li><div class="ex-pname">Door Striker · Heater Bracket</div><div class="ex-pdesc">Press forming &amp; surface treatment safety components. Customers: SL, KDS, MAGNA. 2018 World Class 300 company.</div><div class="ex-specs"><span class="ex-spec">IATF 16949</span><span class="ex-spec">MAGNA Approved</span><span class="ex-spec">World Class 300</span></div></li>
-        </ul>
-      </div>
-      <div class="ex-r">
-        <div class="ex-lbl">Materials</div>
-        <a class="ex-dl" href="https://drive.google.com/file/d/14jxCxSQHg-ljrdSppfKTtpKdYah2NZqM/view?usp=drive_link" target="_blank">
-          <i data-lucide="file-text" style="width:18px;height:18px"></i>
-          <div><div class="ex-dl-name">Jeonwoo Precision Catalog</div><div class="ex-dl-sub">PDF — Deep drawing specialist</div></div>
-          <i data-lucide="download" style="width:14px;height:14px"></i>
-        </a>
-        <button class="ex-book" onclick="openModal('Jeonwoo Precision — Deep Drawing')">Book a Session</button>
-        <button class="ex-close" onclick="toggleExpand('jeonwoo')"><i data-lucide="chevron-up" style="width:13px;height:13px"></i>Close</button>
-      </div>
-    </div>
-    </div>
-
     <div class="co-expand" id="expand-wowtech">
       <div class="ex-l">
         <div class="ex-title">Products & Specifications</div>
@@ -798,9 +776,14 @@ nav{
       </div>
       <div class="ex-r">
         <div class="ex-title">Materials</div>
+        <a class="btn-featured" href="https://drive.google.com/file/d/18Gx9ZDggKEldBgQ_1pGBUs_qBiFrxK2P/view?usp=drive_link" target="_blank">
+          <i data-lucide="star" style="width:18px;height:18px;color:#FFD60A"></i>
+          <div style="flex:1"><div class="btn-featured-name">Featured Products</div><div class="btn-featured-sub">PDF — Key products for this event</div></div>
+          <i data-lucide="external-link" style="width:14px;height:14px;color:rgba(255,255,255,.5)"></i>
+        </a>
         <a class="ex-dl" href="https://drive.google.com/file/d/17JNge196B-bZ1dXlZ2uhxR2uitiZnOTV/view?usp=drive_link" target="_blank">
           <i data-lucide="file-text" style="width:18px;height:18px"></i>
-          <div><div class="ex-dl-name">WOWTECH Company Profile</div><div class="ex-dl-sub">PDF — EV & hybrid parts</div></div>
+          <div><div class="ex-dl-name">Company Catalog</div><div class="ex-dl-sub">PDF — EV & hybrid parts</div></div>
           <i data-lucide="download" style="width:14px;height:14px"></i>
         </a>
         <button class="ex-book" onclick="openModal('WOWTECH — EV & Hybrid Parts')">Book a Session</button>
@@ -810,7 +793,76 @@ nav{
     </div>
 
     <!-- JEONWOO -->
-    
+    <div class="co-wrap" data-track="b" id="wrap-jeonwoo">
+    <div class="co-card" id="card-jeonwoo" onclick="toggleExpand('jeonwoo')">
+      <div class="co-main">
+        <div class="co-l">
+          <div>
+            <div class="co-index">06</div>
+            <div class="co-track t-b">Tier-1 Automotive</div>
+            <div class="co-name">Jeonwoo Precision</div>
+            <div class="co-name-kr">주식회사 전우정밀</div>
+          </div>
+          <div class="co-cat">Precision Deep Drawing</div>
+        </div>
+        <div class="co-m">
+          <ul class="co-prods">
+            <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--blue)"></i>Motor cases for automotive seat & wiper systems</li>
+            <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--blue)"></i>Airbag inflator housings · door strikers · heater brackets</li>
+            <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--blue)"></i>IATF 16949 · ISO 14001 · 2018 World Class 300</li>
+          </ul>
+          <p style="margin-top:32px;font-size:15px;font-weight:400;color:var(--blue);letter-spacing:.01em;text-align:center;font-style:italic;opacity:.9">↓ &nbsp; Click to view product details &amp; catalog</p>
+        </div>
+        <div class="co-r">
+          <div>
+            <div class="co-refs-lbl">Key Customers</div>
+            <div class="co-tags"><span class="co-tag">MAGNA</span><span class="co-tag">SL</span><span class="co-tag">KDS</span><span class="co-tag">AT&S</span></div>
+          </div>
+          <div>
+            <div class="co-slot s-open"><span class="sdot"></span>Available</div>
+            <button class="btn-session" onclick="event.stopPropagation();openModal('Jeonwoo Precision — Deep Drawing')">Book Session</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="co-expand" id="expand-jeonwoo">
+      <div class="ex-l">
+        <div class="ex-title">Products & Specifications</div>
+        <ul class="ex-prods">
+          <li>
+            <div class="ex-pname">Motor Case (Automotive & Robotics)</div>
+            <div class="ex-pdesc">Precision deep-drawn component for automotive seat & wiper motors. High durability, dimensional accuracy. Applicable to robotics actuators. Customers: SL, KDS.</div>
+            <div class="ex-specs"><span class="ex-spec">IATF 16949</span><span class="ex-spec">ISO 14001</span><span class="ex-spec">Deep Drawing</span></div>
+          </li>
+          <li>
+            <div class="ex-pname">Airbag Inflator Housing</div>
+            <div class="ex-pdesc">Precision deep-drawn housing for airbag inflators. High-pressure resistance and structural integrity. Customer: AT&S.</div>
+            <div class="ex-specs"><span class="ex-spec">IATF 16949</span><span class="ex-spec">High-Pressure</span><span class="ex-spec">Safety-Critical</span></div>
+          </li>
+          <li>
+            <div class="ex-pname">Door Striker · Heater Bracket</div>
+            <div class="ex-pdesc">Press forming & surface treatment safety components. Customers: SL, KDS, MAGNA. 2018 World Class 300 company.</div>
+            <div class="ex-specs"><span class="ex-spec">IATF 16949</span><span class="ex-spec">MAGNA Approved</span><span class="ex-spec">World Class 300</span></div>
+          </li>
+        </ul>
+      </div>
+      <div class="ex-r">
+        <div class="ex-title">Materials</div>
+        <a class="btn-featured" href="https://drive.google.com/file/d/1rudWQScxhHVjsf4mDPu3bbnqQqP1QKrO/view?usp=sharing" target="_blank">
+          <i data-lucide="star" style="width:18px;height:18px;color:#FFD60A"></i>
+          <div style="flex:1"><div class="btn-featured-name">Featured Products</div><div class="btn-featured-sub">PDF — Key products for this event</div></div>
+          <i data-lucide="external-link" style="width:14px;height:14px;color:rgba(255,255,255,.5)"></i>
+        </a>
+        <a class="ex-dl" href="https://drive.google.com/file/d/14jxCxSQHg-ljrdSppfKTtpKdYah2NZqM/view?usp=drive_link" target="_blank">
+          <i data-lucide="file-text" style="width:18px;height:18px"></i>
+          <div><div class="ex-dl-name">Company Catalog</div><div class="ex-dl-sub">PDF — Deep drawing specialist</div></div>
+          <i data-lucide="download" style="width:14px;height:14px"></i>
+        </a>
+        <button class="ex-book" onclick="openModal('Jeonwoo Precision — Deep Drawing')">Book a Session</button>
+        <button class="ex-close" onclick="toggleExpand('jeonwoo')"><i data-lucide="chevron-up" style="width:13px;height:13px"></i>Close</button>
+      </div>
+    </div>
+    </div>
 
     <!-- CANLAB -->
     <div class="co-wrap" data-track="c" id="wrap-canlab">
@@ -863,9 +915,14 @@ nav{
       </div>
       <div class="ex-r">
         <div class="ex-title">Materials</div>
+        <a class="btn-featured" href="https://drive.google.com/file/d/13tgDukhJcRdMc_hSwk4aWIaJiOK0KAWf/view?usp=drive_link" target="_blank">
+          <i data-lucide="star" style="width:18px;height:18px;color:#FFD60A"></i>
+          <div style="flex:1"><div class="btn-featured-name">Featured Products</div><div class="btn-featured-sub">PDF — Key products for this event</div></div>
+          <i data-lucide="external-link" style="width:14px;height:14px;color:rgba(255,255,255,.5)"></i>
+        </a>
         <a class="ex-dl" href="https://drive.google.com/file/d/1dTNviaMHwAyNLhLHLYTOii20mZHgVU3n/view?usp=drive_link" target="_blank">
           <i data-lucide="file-text" style="width:18px;height:18px"></i>
-          <div><div class="ex-dl-name">CANLAB Profile ENG</div><div class="ex-dl-sub">PDF — Drone optical sensors</div></div>
+          <div><div class="ex-dl-name">Company Catalog</div><div class="ex-dl-sub">PDF — Drone optical sensors</div></div>
           <i data-lucide="download" style="width:14px;height:14px"></i>
         </a>
         <button class="ex-book" onclick="openModal('CANLAB — Drone Cameras')">Book a Session</button>
@@ -925,9 +982,14 @@ nav{
       </div>
       <div class="ex-r">
         <div class="ex-title">Materials</div>
+        <a class="btn-featured" href="https://drive.google.com/file/d/1fo1c2tmNLNREVZaB33fgo1zFPpuYzYHv/view?usp=drive_link" target="_blank">
+          <i data-lucide="star" style="width:18px;height:18px;color:#FFD60A"></i>
+          <div style="flex:1"><div class="btn-featured-name">Featured Products</div><div class="btn-featured-sub">PDF — Key products for this event</div></div>
+          <i data-lucide="external-link" style="width:14px;height:14px;color:rgba(255,255,255,.5)"></i>
+        </a>
         <a class="ex-dl" href="https://drive.google.com/file/d/1viVVfEIakpYYdJehAzRA_ifXgu9eWIQr/view?usp=drive_link" target="_blank">
           <i data-lucide="file-text" style="width:18px;height:18px"></i>
-          <div><div class="ex-dl-name">RFON Product Catalog</div><div class="ex-dl-sub">PDF — C-UAS systems</div></div>
+          <div><div class="ex-dl-name">Company Catalog</div><div class="ex-dl-sub">PDF — C-UAS systems</div></div>
           <i data-lucide="download" style="width:14px;height:14px"></i>
         </a>
         <button class="ex-book" onclick="openModal('RFON — Counter-UAS Systems')">Book a Session</button>
@@ -966,20 +1028,17 @@ nav{
 
 <script>
 lucide.createIcons();
-
 function openModal(co){
   const sw=window.innerWidth-document.documentElement.clientWidth;
   document.body.style.paddingRight=sw+'px';
   document.body.style.overflow='hidden';
   document.getElementById('overlay').classList.add('active');
 }
-
 function closeModal(){
   document.getElementById('overlay').classList.remove('active');
   document.body.style.paddingRight='';
   document.body.style.overflow='';
 }
-
 function toggleExpand(key){
   const panel=document.getElementById('expand-'+key);
   const card=document.getElementById('card-'+key);
@@ -993,7 +1052,6 @@ function toggleExpand(key){
     setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'start'}),60);
   }
 }
-
 function doFilter(t,btn){
   document.querySelectorAll('.pill').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
@@ -1003,13 +1061,8 @@ function doFilter(t,btn){
   document.querySelectorAll('.co-expand').forEach(p=>p.classList.remove('open'));
   document.querySelectorAll('.co-card').forEach(c=>c.classList.remove('active-card'));
 }
-
-document.getElementById('overlay').addEventListener('click',function(e){
-  if(e.target.id==='overlay') closeModal();
-});
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape') closeModal();
-});
+document.getElementById('overlay').addEventListener('click',function(e){if(e.target.id==='overlay')closeModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
 </script>
 </body>
 </html>
